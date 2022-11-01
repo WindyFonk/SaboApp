@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
-    private int a;
-    private String alpha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
