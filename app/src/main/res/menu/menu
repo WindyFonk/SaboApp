@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/shop"
+        android:title="Shop"
+        android:icon="@drawable/shope"/>
+
+    <item android:id="@+id/myOder"
+        android:title="My Title"
+        android:icon="@drawable/store"/>
+
+    <item android:id="@+id/myCardsAndWallet"
+        android:title="My Cards And Wallet"
+        android:icon="@drawable/wallet"/>
+
+    <item android:id="@+id/address"
+        android:title="Address"
+        android:icon="@drawable/address"
+        />
+
+    <item android:id="@+id/Profile"
+        android:title="Profile"
+        android:icon="@drawable/ic_baseline_people_24"/>
+
+    <item android:id="@+id/Logout"
+        android:title="Logout"
+        android:icon="@drawable/logout"/>
+</menu>
