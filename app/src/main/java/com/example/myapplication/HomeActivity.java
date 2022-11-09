@@ -7,6 +7,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -55,6 +56,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
+    @SuppressLint("SuspiciousIndentation")
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerVisible(GravityCompat.START))
@@ -83,6 +85,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.Profile:
             startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
             break;
+
+            case R.id.shop:
+                startActivity(new Intent(getApplicationContext(), Shop.class));
+                break;
         }
         return true;
     }
