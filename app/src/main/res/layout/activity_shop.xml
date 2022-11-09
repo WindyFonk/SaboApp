@@ -4,6 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Shop">
+    tools:context=".Shop"
+    android:background="@drawable/color_background">
 
+    <GridView
+        android:id="@+id/listshoe"
+        android:layout_width="408dp"
+        android:layout_height="637dp"
+        android:numColumns="2"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
