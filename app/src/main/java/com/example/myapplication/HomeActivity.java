@@ -1,4 +1,4 @@
-
+package com.example.myapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,8 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.example.splashscreen.adapter.FeaturedAdapter;
-import com.example.splashscreen.adapter.FeaturedHelperClass;
+import com.example.adapter.FeaturedAdapter;
+import com.example.adapter.FeaturedHelperClass;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -81,7 +81,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.Profile:
-            startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
             break;
         }
         return true;

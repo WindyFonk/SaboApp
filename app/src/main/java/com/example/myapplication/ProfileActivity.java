@@ -1,8 +1,10 @@
-package com.example.splashscreen;
+package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.myapplication.R;
 
 public class ProfileActivity extends AppCompatActivity {
 

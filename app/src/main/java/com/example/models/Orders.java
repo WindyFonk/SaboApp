@@ -1,4 +1,4 @@
-package com.example.myapplication.models;
+package com.example.models;
 
 public class Orders {
     private int id, userid;

@@ -1,4 +1,4 @@
-package com.example.myapplication.models;
+package com.example.models;
 
 public class Shoes {
     private String name, brand;

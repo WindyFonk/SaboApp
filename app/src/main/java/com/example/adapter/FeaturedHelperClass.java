@@ -1,3 +1,5 @@
+package com.example.adapter;
+
 public class FeaturedHelperClass {
     int image;
     String title, description;

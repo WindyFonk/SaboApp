@@ -5,6 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileActivity"
-    android:background="@color/teal_200">
+    android:background="@drawable/color_background">
+
+    <ImageView
+        android:id="@+id/ivMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/menu_border"
+        android:src="@drawable/ic_baseline_menu_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
