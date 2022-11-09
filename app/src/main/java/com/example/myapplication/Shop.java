@@ -59,7 +59,7 @@ public class Shop extends AppCompatActivity {
 
                             ShoesAdapter adapter = new ShoesAdapter(list);
                             lvshoes.setAdapter(adapter);
-                            System.out.println(list);
+                            System.out.println(list.get(0).getImage());
                         } else {
                             Log.w("TAG", "Error getting documents.", task.getException());
                         }
