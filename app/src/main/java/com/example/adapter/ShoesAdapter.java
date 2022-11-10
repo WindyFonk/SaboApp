@@ -63,6 +63,7 @@ public class ShoesAdapter extends BaseAdapter {
         holder.tvShoename.setText(shoe.getName());
         holder.tvShoeprice.setText("" + shoe.getPrice());
         Uri downloadUri = Uri.parse(shoe.getImage());
+        Glide.with(view.getContext()).load(shoe.getImage()).into(holder.imgShoe);
         return view;
     }
 

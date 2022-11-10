@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Shop"
-    android:background="@drawable/color_background">
+    android:background="@drawable/color_background"
+    tools:context=".Shop">
 
     <GridView
         android:id="@+id/listshoe"
@@ -17,4 +17,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="156dp"
+        android:layout_height="109dp"
+        android:layout_marginStart="127dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/sabologo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
