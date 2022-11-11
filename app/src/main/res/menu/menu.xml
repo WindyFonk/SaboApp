@@ -3,15 +3,11 @@
 
     <item android:id="@+id/shop"
         android:title="Shop"
-        android:icon="@drawable/shope"/>
+        android:icon="@drawable/shop"/>
 
     <item android:id="@+id/myOder"
-        android:title="My Title"
+        android:title="My Order"
         android:icon="@drawable/store"/>
-
-    <item android:id="@+id/myCardsAndWallet"
-        android:title="My Cards And Wallet"
-        android:icon="@drawable/wallet"/>
 
     <item android:id="@+id/address"
         android:title="Address"
