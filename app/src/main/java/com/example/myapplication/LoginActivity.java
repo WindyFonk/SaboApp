@@ -1,15 +1,26 @@
 package com.example.myapplication;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.models.AppUsers;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -23,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText txEmail, txPassword;
     Button btnLogin, btnSignup;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    GoogleSignInClient gsc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +64,46 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //google login
+        GoogleSignInOptions gso = new GoogleSignInOptions
+                .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        gsc = GoogleSignIn.getClient(LoginActivity.this,gso);
+
+        SignInButton sib = findViewById(R.id.btnGoogleSignin);
+        sib.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent googleIntent = gsc.getSignInIntent();
+                googleLauncher.launch(googleIntent);
+            }
+        });
+
     }
 
+    ActivityResultLauncher<Intent> googleLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    Intent data=result.getData();
+                    Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+                    try{
+                        GoogleSignInAccount account = task.getResult(ApiException.class);
+                        String email = account.getEmail();
+                        Intent intentmain = new Intent(LoginActivity.this,HomeActivity.class);
+                        startActivity(intentmain);
+                        finish();
+                    } catch (Exception e) {
+                        Log.d(">>>>>>>>>>>>>>ERROR: ",e.getMessage());
+                    }
+                }
+            });
+
+
+    //Validation
     private boolean validCheck(String email, String password){
         if (email.length()==0){
             Toast.makeText(this, "Vui lòng nhập email", Toast.LENGTH_SHORT).show();
@@ -71,6 +121,7 @@ public class LoginActivity extends AppCompatActivity {
         String _email=txEmail.getText().toString();
         String _password=txPassword.getText().toString();
 
+        //using firebase database: https://console.firebase.google.com/u/0/project/duan-f46e9/firestore
         db.collection("AppUsers")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -95,4 +146,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+
+
 }

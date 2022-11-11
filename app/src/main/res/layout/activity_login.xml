@@ -104,19 +104,28 @@
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_marginStart="284dp"
-            android:layout_marginBottom="200dp"
+            android:layout_marginBottom="224dp"
             android:background="@drawable/button_border"
             android:text="login"
             android:textAllCaps="true"
             app:layout_constraintBottom_toBottomOf="@id/tab_layout"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/btnGoogleSignin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="152dp"
+            android:layout_marginTop="284dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSignup"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_marginStart="152dp"
-            android:layout_marginBottom="104dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/button_border"
             android:text="Sign up"
             android:textAllCaps="true"
