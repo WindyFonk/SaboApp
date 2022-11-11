@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        
+
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -20,6 +20,7 @@
             android:layout_marginBottom="10dp"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/createPfpPic"
             android:layout_width="140dp"
             android:layout_height="140dp"
             android:src="@drawable/addimage"
@@ -44,15 +45,18 @@
                 android:textSize="16sp"
                 android:textColor="@color/white"
                 android:layout_marginBottom="2dp"/>
+
             <EditText
+                android:id="@+id/txtAddress"
                 android:layout_width="380dp"
                 android:layout_height="110dp"
-                android:layout_marginTop="10dp"
                 android:layout_gravity="center"
-                 android:layout_marginStart="2dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/border_profile_description"/>
+                android:background="@drawable/border_profile_description"
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -60,26 +64,31 @@
                 android:text="Ph. number: "
                 android:textSize="16sp"
                 android:textColor="@color/white"/>
+
             <EditText
+                android:id="@+id/txtPhone"
                 android:layout_width="380dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="10dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
                 android:layout_marginStart="2dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
-                android:background="@drawable/border_profile_description"/>
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/border_profile_description"
+                android:textColor="#FFFFFF" />
+
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/goShop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:text="Ready to shop >"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="22dp"
+                android:background="@drawable/logo_shape"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
-                android:layout_marginTop="10dp"
-                android:textAllCaps="true"
-                android:layout_marginEnd="22dp"
-                android:background="@drawable/logo_shape"/>
+                android:text="Ready to shop >"
+                android:textAllCaps="true" />
         </LinearLayout>
     </LinearLayout>
 

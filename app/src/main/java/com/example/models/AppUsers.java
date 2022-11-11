@@ -3,16 +3,17 @@ package com.example.models;
 public class AppUsers {
     private String email, password, name, address, phonenumb;
     private Integer role;
+    private String id;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    private Integer id;
+
 
     public AppUsers(String email, String password, String name, String address, String phonenumb, Integer role) {
         this.email = email;
