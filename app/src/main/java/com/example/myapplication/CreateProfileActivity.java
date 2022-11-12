@@ -45,7 +45,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class CreateProfileActivity extends AppCompatActivity {
 
-    EditText txAddress, txPhone;
+    EditText txAddress, txPhone, txName;
     CircleImageView pfpPic;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     String imglink;
@@ -58,6 +58,7 @@ public class CreateProfileActivity extends AppCompatActivity {
         txAddress = findViewById(R.id.txtAddress);
         txPhone=findViewById(R.id.txtPhone);
         gotoshop=findViewById(R.id.goShop);
+        txName=findViewById(R.id.txtName);
         pfpPic=findViewById(R.id.createPfpPic);
 
         gotoshop.setOnClickListener(new View.OnClickListener() {
@@ -165,10 +166,12 @@ public class CreateProfileActivity extends AppCompatActivity {
         String password = sharedPreferences.getString("password",null);
         String phonenumb = txPhone.getText().toString();
         String address = txAddress.getText().toString();
+        String name = txName.getText().toString();
         Map<String, Object> item = new HashMap<>();
         item.put("email", email);
         item.put("password", password);
         item.put("phonenumber", phonenumb);
+        item.put("name", name);
         item.put("address", address);
         item.put("image",imglink);
         item.put("role",2);

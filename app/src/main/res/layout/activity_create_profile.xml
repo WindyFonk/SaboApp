@@ -26,14 +26,21 @@
             android:src="@drawable/addimage"
             android:layout_gravity="center"
             />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Enter your name"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:gravity="center"
-            android:layout_marginBottom="25dp"/>
+
+        <EditText
+            android:id="@+id/txtName"
+            android:layout_width="380dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:paddingLeft="130dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:hint="Enter your name"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
