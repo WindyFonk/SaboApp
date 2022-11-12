@@ -40,6 +40,7 @@ public class Shop extends AppCompatActivity {
             }
         });
     }
+    /* abc */
 
     @Override
     protected void onResume() {
