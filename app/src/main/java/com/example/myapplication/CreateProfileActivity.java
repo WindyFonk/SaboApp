@@ -186,6 +186,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                         Toast.makeText(CreateProfileActivity.this, "Chào mừng bạn đến với Sabo", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(CreateProfileActivity.this,HomeActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
