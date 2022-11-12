@@ -1,42 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="160dp"
-    android:layout_height="300dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="2dp"
-    app:cardElevation="8dp"
-    android:layout_margin="10dp">
-    
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="15dp"
-        android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="@drawable/border_menu_background"
+    android:layout_marginEnd="20dp">
 
-        <ImageView
-            android:id="@+id/featured_image"
-            android:layout_width="match_parent"
-            android:layout_height="170dp"
-            android:src="@drawable/fitness_new"
-            android:scaleType="centerCrop"/>
-        <TextView
-            android:id="@+id/featured_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Want a perfect body? Read this"
-            android:textSize="16sp"/>
-        <RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:rating="4.5"
-            style="@style/Widget.AppCompat.RatingBar.Small"/>
-        <TextView
-            android:id="@+id/featured_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:text="Copyright by author"/>
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/menu_logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/sabologo"
+        android:layout_centerHorizontal="true"/>
 
-</androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/profile"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/menu_logo"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/profile"
+        android:background="@drawable/logo_shape"/>
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/menu_logo"
+        android:layout_marginStart="70dp"
+        android:textSize="12sp"
+        android:layout_marginTop="12dp"
+        android:text="Tim Jennings"
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/user_name"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:text="2972 Westheimer Rd. Santa Ana, Illinois 85486"
+        android:textColor="@color/white"/>
+
+
+</RelativeLayout>
