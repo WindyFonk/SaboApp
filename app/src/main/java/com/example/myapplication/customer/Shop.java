@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.customer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import com.example.adapter.ShoesAdapter;
 import com.example.models.Shoes;
+import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -68,7 +69,6 @@ public class Shop extends AppCompatActivity {
 
                             ShoesAdapter adapter = new ShoesAdapter(list);
                             lvshoes.setAdapter(adapter);
-                            System.out.println(list.get(0).getImage());
                         } else {
                             Log.w("TAG", "Error getting documents.", task.getException());
                         }

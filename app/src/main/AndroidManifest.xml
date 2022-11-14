@@ -18,28 +18,28 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".CreateProfileActivity"
+            android:name=".customer.CreateProfileActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SignupActivity"
+            android:name=".customer.SignupActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Shop"
+            android:name=".customer.Shop"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".customer.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,13 +48,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomeActivity"
+            android:name=".customer.HomeActivity"
             android:exported="true" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".customer.ProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".customer.LoginActivity"
             android:exported="true" />
     </application>
 

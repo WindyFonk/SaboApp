@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.customer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.adapter.ShoesAdapter;
+import com.example.models.Shoes;
+import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -54,25 +57,49 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private boolean validCheck(String email, String password, String repass){
+
         if (email.length()==0){
             Toast.makeText(this, "Vui lòng nhập email", Toast.LENGTH_SHORT).show();
             return false;
         }
+
         else if (password.length()==0){
             Toast.makeText(this, "Vui lòng nhập password", Toast.LENGTH_SHORT).show();
             return false;
         }
+
         else if (repass.length()==0){
             Toast.makeText(this, "Vui lòng nhập lại password", Toast.LENGTH_SHORT).show();
             return false;
         }
-
         else if (repass.equals(password)==false){
             Toast.makeText(this, "Password nhập lại không đúng", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
 
+    }
+
+    private boolean identicalCheck(String email){
+        //check identical emails
+        db.collection("AppUsers")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            ArrayList<String> list = new ArrayList<>();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Map<String, Object> map = document.getData();
+                                String _email = map.get("email").toString();
+                                list.add(_email);
+                            }
+                        } else {
+                            Log.w("TAG", "Error getting documents.", task.getException());
+                        }
+                    }
+                });
+        return true;
     }
 
     public void onSignupClick(){

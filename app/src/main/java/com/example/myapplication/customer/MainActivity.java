@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.customer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.example.myapplication.R;
 
 public class MainActivity extends AppCompatActivity {
     ImageView ivLogo;
