@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.staff.HomeActivity_Staff;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -134,13 +135,23 @@ public class LoginActivity extends AppCompatActivity {
                                 String password = map.get("password").toString();
                                 if (_email.equals(email) && _password.equals(password)){
                                     String id = document.getId();
+                                    Long role = (Long) document.get("role");
                                     Log.d("IDTAG:  ",""+id);
+                                    Log.d("RoleTAG:  ",""+role);
                                     SharedPreferences sharedPreferences =
                                             getSharedPreferences("USER",MODE_PRIVATE);
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
                                     editor.putString("Id",id);
-                                    Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
-                                    startActivity(intent);
+                                    if (role==2){
+                                        Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+                                        Log.d(">>>LOGINAS: ","Customer");
+                                        startActivity(intent);
+                                    }
+                                    else if (role==1){
+                                        Intent intent = new Intent(LoginActivity.this, HomeActivity_Staff.class);
+                                        Log.d(">>>LOGINAS: ","Staff");
+                                        startActivity(intent);
+                                    }
                                     Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                                 }
                             }

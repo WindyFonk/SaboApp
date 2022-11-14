@@ -1,4 +1,4 @@
-package com.example.myapplication.customer;
+package com.example.myapplication.staff;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +21,8 @@ import com.bumptech.glide.Glide;
 import com.example.adapter.FeaturedAdapter;
 import com.example.adapter.FeaturedHelperClass;
 import com.example.myapplication.R;
+import com.example.myapplication.customer.ProfileActivity;
+import com.example.myapplication.customer.Shop;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
@@ -32,7 +34,7 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity_Staff extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     RecyclerView featuredRecycler;
     RecyclerView.Adapter adapter;
     ImageView menuIcon;
@@ -46,7 +48,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_home_staff);
 
         featuredRecycler = findViewById(R.id.featured_recycler);
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -78,7 +80,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
                         Name.setText(name);
                         Address.setText(address);
-                        Glide.with(HomeActivity.this)
+                        Glide.with(HomeActivity_Staff.this)
                                 .load(image)
                                 .into(Pfp);
                         Log.d(">>TAG", name +"\n"+address+"\n"+image);
@@ -123,7 +125,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         if (drawerLayout.isDrawerVisible(GravityCompat.START))
             drawerLayout.closeDrawer(GravityCompat.START);
         else
-        super.onBackPressed();
+            super.onBackPressed();
     }
 
     private void featuredRecycler() {
@@ -144,11 +146,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.Profile:
-            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-            break;
+                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                break;
 
             case R.id.shop:
-                startActivity(new Intent(getApplicationContext(), Shop.class));
+                startActivity(new Intent(getApplicationContext(), Shop_Staff.class));
                 break;
         }
         return true;

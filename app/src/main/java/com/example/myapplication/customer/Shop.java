@@ -59,11 +59,13 @@ public class Shop extends AppCompatActivity {
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Map<String, Object> map = document.getData();
+                                String id= document.getId();
                                 String brand = map.get("Brand").toString();
                                 String name = map.get("Name").toString();
                                 Long price = (Long) map.get("Price");
                                 String image = map.get("Image").toString();
-                                Shoes shoe =new Shoes(name,brand,price,image);
+                                String details = map.get("Details").toString();
+                                Shoes shoe =new Shoes(id,name,brand,price,image,details);
                                 list.add(shoe);
                             }
 

@@ -1,8 +1,29 @@
 package com.example.models;
 
 public class Shoes {
-    private String name, brand, image;
+    private String name;
+    private String brand;
+    private String image;
+    private String details;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    private String id;
     private Long price;
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
 
     public String getImage() {
         return image;
@@ -12,11 +33,13 @@ public class Shoes {
         this.image = image;
     }
 
-    public Shoes(String name, String brand, Long price, String image) {
+    public Shoes(String id,String name, String brand, Long price, String image, String details) {
         this.name = name;
         this.brand = brand;
         this.price = price;
         this.image=image;
+        this.details=details;
+        this.id=id;
     }
 
     public String getName() {
