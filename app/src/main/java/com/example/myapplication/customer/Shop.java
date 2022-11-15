@@ -3,6 +3,7 @@ package com.example.myapplication.customer;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -36,8 +37,12 @@ public class Shop extends AppCompatActivity {
 
         lvshoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+            public void onItemClick(AdapterView<?> parent, View view, int position, long _id) {
+                Shoes shoe= (Shoes) parent.getItemAtPosition(position);
+                String id = shoe.getId();
+                Intent intent = new Intent(Shop.this, ItemActivity.class);
+                intent.putExtra("idshoe",id);
+                startActivity(intent);
             }
         });
     }
@@ -56,7 +61,6 @@ public class Shop extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             ArrayList<Shoes> list = new ArrayList<>();
-
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Map<String, Object> map = document.getData();
                                 String id= document.getId();

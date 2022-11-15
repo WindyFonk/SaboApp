@@ -46,3 +46,5 @@ app/src/main/AndroidManifest.xml
 app/src/main/res/values/strings.xml
 local.properties
 app/src/main/res/values/strings.xml
+.gradle/workspace-id.txt
+.gradle/buildOutputCleanup/buildOutputCleanup.lock

@@ -60,9 +60,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         Pfp=headerView.findViewById(R.id.pfpside);
 
         //getting user id
-        SharedPreferences sharedPreferences =
-                getSharedPreferences("USER",MODE_PRIVATE);
-        String id = sharedPreferences.getString("Id",null);
+        Bundle extras = getIntent().getExtras();
+        String id = extras.getString("IdUser");
 
         DocumentReference docRef = db.collection("AppUsers").document(id);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {

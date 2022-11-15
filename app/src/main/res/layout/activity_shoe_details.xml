@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ItemActivity"
     android:background="@drawable/color_background">
 
     <LinearLayout
@@ -36,24 +35,19 @@
         android:layout_below="@id/llTop"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Men's Shoes"
-            android:textColor="@color/white"
-            android:paddingBottom="40dp"
-            android:textSize="12sp"
-            android:paddingStart="20dp"/>
+
         <ImageView
             android:layout_width="380dp"
             android:layout_height="200dp"
             android:src="@drawable/img"
+            android:id="@+id/imgShoe"
             android:layout_gravity="center"/>
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="nike air max genome"
             android:textAllCaps="true"
+            android:id="@+id/tvShoeName"
             android:backgroundTint="@color/white"
             android:textColor="@color/white"
             android:layout_marginTop="20dp"
@@ -65,27 +59,33 @@
             android:layout_height="wrap_content"
             android:text="Inspired by the early 2000s look, the Air Max Genome adds a fresh face to the Air Max house. Its techy upper features a mixture of materials including sleek no-sew skins, airy mesh and durable plastic details. The low-profile, full-length Air unit adds comfort to match its sleek design that's sure to become your new favourite Air Max. This product is made from at least 20% recycled materials by weight."
             android:textColor="@color/white"
+            android:id="@+id/tvShoeDetails"
             android:paddingStart="10dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Size: XL"
+            android:id="@+id/tvShoeSize"
             android:textSize="24sp"
             android:textColor="@color/white"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:paddingStart="10dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Color: White"
+            android:id="@+id/tvShoeColor"
             android:textColor="@color/white"
-            android:textSize="24sp"/>
+            android:textSize="24sp"
+            android:paddingStart="10dp"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add to cart"
+            android:id="@+id/btnAddCart"
             android:layout_marginTop="10dp"
             android:background="@drawable/border_add_cart"
             android:layout_gravity="right"

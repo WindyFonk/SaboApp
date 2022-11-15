@@ -138,17 +138,15 @@ public class LoginActivity extends AppCompatActivity {
                                     Long role = (Long) document.get("role");
                                     Log.d("IDTAG:  ",""+id);
                                     Log.d("RoleTAG:  ",""+role);
-                                    SharedPreferences sharedPreferences =
-                                            getSharedPreferences("USER",MODE_PRIVATE);
-                                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                                    editor.putString("Id",id);
                                     if (role==2){
                                         Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+                                        intent.putExtra("IdUser",id);
                                         Log.d(">>>LOGINAS: ","Customer");
                                         startActivity(intent);
                                     }
                                     else if (role==1){
                                         Intent intent = new Intent(LoginActivity.this, HomeActivity_Staff.class);
+                                        intent.putExtra("IdUser",id);
                                         Log.d(">>>LOGINAS: ","Staff");
                                         startActivity(intent);
                                     }
