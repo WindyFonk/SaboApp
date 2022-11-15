@@ -69,10 +69,11 @@ public class Shop extends AppCompatActivity {
                                 Long price = (Long) map.get("Price");
                                 String image = map.get("Image").toString();
                                 String details = map.get("Details").toString();
-                                Shoes shoe =new Shoes(id,name,brand,price,image,details);
+                                String size= (String) map.get("Size");
+                                String color = (String) map.get("Color");
+                                Shoes shoe =new Shoes(id,name,brand,price,image,details,size,color);
                                 list.add(shoe);
                             }
-
                             ShoesAdapter adapter = new ShoesAdapter(list);
                             lvshoes.setAdapter(adapter);
                         } else {

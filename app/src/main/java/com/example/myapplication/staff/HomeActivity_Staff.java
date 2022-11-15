@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -41,7 +42,6 @@ public class HomeActivity_Staff extends AppCompatActivity implements NavigationV
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-
     TextView Name, Address;
     CircleImageView Pfp;
 
@@ -54,6 +54,7 @@ public class HomeActivity_Staff extends AppCompatActivity implements NavigationV
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view_customer);
         menuIcon = findViewById(R.id.ivMenu);
+
 
         //getting Side navigation
         View headerView = navigationView.getHeaderView(0);

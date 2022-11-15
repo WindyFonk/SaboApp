@@ -5,6 +5,8 @@ public class Shoes {
     private String brand;
     private String image;
     private String details;
+    private String size;
+    private String color;
 
     public String getId() {
         return id;
@@ -33,13 +35,15 @@ public class Shoes {
         this.image = image;
     }
 
-    public Shoes(String id,String name, String brand, Long price, String image, String details) {
+    public Shoes(String id,String name, String brand, Long price, String image, String details, String size, String color) {
         this.name = name;
         this.brand = brand;
         this.price = price;
         this.image=image;
         this.details=details;
         this.id=id;
+        this.size=size;
+        this.color=color;
     }
 
     public String getName() {

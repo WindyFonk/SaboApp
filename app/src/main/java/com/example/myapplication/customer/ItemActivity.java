@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.models.Shoes;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -46,7 +47,9 @@ public class ItemActivity extends AppCompatActivity {
                         String image = (String) document.get("Image");
                         String color = (String) document.get("Color");
                         String size = (String) document.get("Size");
-
+                        Long price = (Long) document.get("Price");
+                        String brand = (String) document.get("Brand");
+                        Shoes shoe = new Shoes(id,name,brand,price,image,details,size,color);
                         Name.setText(name);
                         Details.setText(details);
                         Color.setText("Color: "+color);

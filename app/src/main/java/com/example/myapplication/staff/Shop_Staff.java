@@ -61,6 +61,9 @@ public class Shop_Staff extends AppCompatActivity {
     Shoes ashoe=null;
     String imglink;
     FloatingActionButton fabAddShoe;
+    CircleImageView editImage;
+
+
     ActivityResultLauncher<Intent> upLoadImg= registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -69,6 +72,9 @@ public class Shop_Staff extends AppCompatActivity {
                     if (result != null) {
                         Uri imageUri = result.getData().getData();
                         imglink=imageUri.toString();
+                        Glide.with(Shop_Staff.this)
+                                .load(imglink)
+                                .into(editImage);
                         try {
                             useImage(imageUri);
                         } catch (IOException e) {
@@ -124,10 +130,11 @@ public class Shop_Staff extends AppCompatActivity {
                                 Long price = (Long) map.get("Price");
                                 String image = map.get("Image").toString();
                                 String details = map.get("Details").toString();
-                                Shoes shoe =new Shoes(id,name,brand,price,image,details);
+                                String size= (String) map.get("Size");
+                                String color = (String) map.get("Color");
+                                Shoes shoe =new Shoes(id,name,brand,price,image,details,size,color);
                                 list.add(shoe);
                             }
-
                             ShoesAdapter adapter = new ShoesAdapter(list);
                             lvshoes.setAdapter(adapter);
                         } else {
@@ -138,8 +145,7 @@ public class Shop_Staff extends AppCompatActivity {
     }
 
     public void AddShoesDialog(Shoes shoe) {
-        EditText editBrand, editName, editPrice, editDetails;
-        CircleImageView editImage;
+        EditText editBrand, editName, editPrice, editDetails, editSize, editColor;
         LayoutInflater mLayoutInflater = getLayoutInflater();
         AlertDialog alertDialog;
         Shoes ashoe=shoe;
@@ -149,15 +155,14 @@ public class Shop_Staff extends AppCompatActivity {
         editPrice=view.findViewById(R.id.txtShoePrice);
         editDetails=view.findViewById(R.id.txtShoeDetails);
         editImage=view.findViewById(R.id.ShoePic);
+        editColor=view.findViewById(R.id.txtShoeColor);
+        editSize=view.findViewById(R.id.txtShoeSize);
         editImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                     Intent pickIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     pickIntent.setType("image/*");
                     upLoadImg.launch(pickIntent);
-                Glide.with(Shop_Staff.this)
-                        .load(imglink)
-                        .into(editImage);
             }
         });
 
@@ -178,6 +183,8 @@ public class Shop_Staff extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int which) {
                             String Name = editName.getText().toString();
                             String Brand = editBrand.getText().toString();
+                            String Size = editSize.getText().toString();
+                            String Color = editColor.getText().toString();
                             Long Price = Long.valueOf(editPrice.getText().toString()) ;
                             String Details = editDetails.getText().toString();
                             Map<String, Object> item = new HashMap<>();
@@ -186,6 +193,8 @@ public class Shop_Staff extends AppCompatActivity {
                             item.put("Price", Price);
                             item.put("Details", Details);
                             item.put("Image",imglink);
+                            item.put("Size",Size);
+                            item.put("Color",Color);
                             db.collection("Shoe")
                                     .add(item)
                                     .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -229,7 +238,7 @@ public class Shop_Staff extends AppCompatActivity {
     public void upLoadImage(Bitmap bitmap){
         FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
         StorageReference storageReference = firebaseStorage.getReference();
-        StorageReference imageReference = storageReference.child(Calendar.getInstance().getTimeInMillis()+".jpg");
+        StorageReference imageReference = storageReference.child(Calendar.getInstance().getTimeInMillis()+".png");
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100,stream);
         byte[] bytes = stream.toByteArray();
@@ -246,6 +255,7 @@ public class Shop_Staff extends AppCompatActivity {
                 if (task.isSuccessful()){
                     Uri downloadUri = task.getResult();
                     imglink=downloadUri.toString();
+
                 }
             }
         });
