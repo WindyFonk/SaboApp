@@ -139,6 +139,10 @@ public class LoginActivity extends AppCompatActivity {
                                     Log.d("IDTAG:  ",""+id);
                                     Log.d("RoleTAG:  ",""+role);
                                     if (role==2){
+                                        SharedPreferences sharedPreferences =
+                                                getSharedPreferences("USER",MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString("Id",id);
                                         Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
                                         intent.putExtra("IdUser",id);
                                         Log.d(">>>LOGINAS: ","Customer");

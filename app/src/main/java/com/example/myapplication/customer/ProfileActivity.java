@@ -36,9 +36,9 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void loadInfo(){
-        SharedPreferences sharedPreferences =
-                getSharedPreferences("USER",MODE_PRIVATE);
-        String id = sharedPreferences.getString("Id",null);
+        Bundle extras = getIntent().getExtras();
+        String id = extras.getString("IdUser");
+        Log.d(">>>USER ID:",id);
 
         DocumentReference docRef = db.collection("AppUsers").document(id);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {

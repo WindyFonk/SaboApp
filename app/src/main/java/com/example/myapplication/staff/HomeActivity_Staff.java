@@ -44,6 +44,7 @@ public class HomeActivity_Staff extends AppCompatActivity implements NavigationV
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     TextView Name, Address;
     CircleImageView Pfp;
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +65,7 @@ public class HomeActivity_Staff extends AppCompatActivity implements NavigationV
 
         //getting user id
         Bundle extras = getIntent().getExtras();
-        String id = extras.getString("IdUser");
+        id = extras.getString("IdUser");
 
         DocumentReference docRef = db.collection("AppUsers").document(id);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -145,11 +146,11 @@ public class HomeActivity_Staff extends AppCompatActivity implements NavigationV
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.Profile:
+            case R.id.profileStaff:
                 startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                 break;
 
-            case R.id.shop:
+            case R.id.Shop:
                 startActivity(new Intent(getApplicationContext(), Shop_Staff.class));
                 break;
         }

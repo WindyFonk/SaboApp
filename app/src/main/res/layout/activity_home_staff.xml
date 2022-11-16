@@ -158,7 +158,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:headerLayout="@layout/header_layout_staff"
+        app:headerLayout="@layout/header_layout"
         app:menu="@menu/menu_staff"
         android:background="@drawable/color_background"
         app:itemTextColor="@color/white"

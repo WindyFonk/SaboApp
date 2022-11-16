@@ -39,7 +39,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-
+    String id;
     TextView Name, Address;
     CircleImageView Pfp;
 
@@ -61,7 +61,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         //getting user id
         Bundle extras = getIntent().getExtras();
-        String id = extras.getString("IdUser");
+        id = extras.getString("IdUser");
 
         DocumentReference docRef = db.collection("AppUsers").document(id);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -143,7 +143,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.Profile:
-            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                intent.putExtra("IdUser",id);
+                startActivity(intent);
             break;
 
             case R.id.shop:

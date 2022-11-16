@@ -5,19 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.ListView;
 
-import com.example.adapter.AdapterCart;
-import com.example.adapter.ShoesAdapter;
+import com.example.library.TinyDB;
 import com.example.models.Cart;
 import com.example.models.Shoes;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -27,21 +22,17 @@ import java.util.Map;
 
 public class CartActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    ArrayList<Object> cartlist = new ArrayList<Object>();
     ListView lvcart;
-
+    TinyDB tinydb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
         lvcart = findViewById(R.id.listcart);
+        tinydb = new TinyDB(CartActivity.this);
         loadData();
-
-        lvcart.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });
+        cartlist=tinydb.getListObject("CartList",Shoes.class);
     }
 
     @Override
