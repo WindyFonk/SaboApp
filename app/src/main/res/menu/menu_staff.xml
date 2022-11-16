@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/Shop"
+        android:title="Shop"
+        android:icon="@drawable/shop"/>
+
+    <item android:id="@+id/CreateOrder"
+        android:title="Create Order"
+        android:icon="@drawable/cartorder" />
+
+    <item android:id="@+id/profileStaff"
+        android:icon="@drawable/ic_baseline_people_24"
+        android:title="Profile"/>
+
+    <item android:id="@+id/Statistics"
+        android:title="Statistics"
+        android:icon="@drawable/statistics"/>
+        
+    <item android:id="@+id/Logout"
+        android:title="Logout"
+        android:icon="@drawable/logout"/>
+
+</menu>
