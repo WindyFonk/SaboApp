@@ -38,11 +38,13 @@
 
     <GridView
         android:id="@+id/listshoe"
-        android:layout_width="408dp"
-        android:layout_height="637dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:numColumns="2"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
