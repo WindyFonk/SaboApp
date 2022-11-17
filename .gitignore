@@ -48,3 +48,6 @@ local.properties
 app/src/main/res/values/strings.xml
 .gradle/workspace-id.txt
 .gradle/buildOutputCleanup/buildOutputCleanup.lock
+.idea/workspace.xml
+*.lock
+.idea/workspace.xml
