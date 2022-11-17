@@ -2,9 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#C0FEFC"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:background="@drawable/border_cart_item"
     android:orientation="horizontal">
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,33 +24,50 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="NIKE 123213123"
-            android:textSize="25dp"
-            android:lineHeight="22sp"
-            android:textColor="@color/black"
-            android:id="@+id/name"/>
 
         <TextView
-            android:layout_width="69dp"
-            android:layout_height="24dp"
-            android:text="123213123"
-            android:textSize="18dp"
-            android:layout_marginLeft="145dp"
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:lineHeight="22sp"
+            android:text="Nike Airmax Genome"
             android:textColor="@color/black"
-            android:id="@+id/price"/>
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:padding="@dimen/cardview_default_radius"
+            android:text="15,495"
+            android:textColor="#5A0505"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/shoesize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Size: US 9.5"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NIKE 123213123"
-            android:textSize="18dp"
+            android:layout_marginTop="10dp"
+            android:text="Color: White"
             android:textColor="@color/black"
-            android:id="@+id/shoesize"/>
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
