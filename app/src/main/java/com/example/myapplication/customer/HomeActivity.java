@@ -35,7 +35,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     RecyclerView featuredRecycler;
     RecyclerView.Adapter adapter;
-    ImageView menuIcon;
+    ImageView menuIcon,cartIcon;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -48,6 +48,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        cartIcon=findViewById(R.id.cart);
         featuredRecycler = findViewById(R.id.featured_recycler);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view_customer);
@@ -58,6 +59,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         Name = headerView.findViewById(R.id.user_name_side);
         Address=headerView.findViewById(R.id.address_side);
         Pfp=headerView.findViewById(R.id.pfpside);
+
+        cartIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(HomeActivity.this,CartActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //getting user id
         Bundle extras = getIntent().getExtras();

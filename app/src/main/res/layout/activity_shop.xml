@@ -18,12 +18,13 @@
         android:background="@color/white"
         android:elevation="8dp">
 
-        <EditText
+        <AutoCompleteTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
             android:hint="Search...."
+            android:id="@+id/search"
             android:paddingLeft="10dp" />
 
         <ImageView

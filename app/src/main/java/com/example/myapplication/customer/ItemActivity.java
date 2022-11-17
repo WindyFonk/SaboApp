@@ -30,7 +30,7 @@ public class ItemActivity extends AppCompatActivity {
     Button btnAddToCart;
     Shoes shoe;
     TinyDB tinydb;
-    ArrayList<Object> cartlist = new ArrayList<Object>();
+    ArrayList<Object> cartlist;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +45,13 @@ public class ItemActivity extends AppCompatActivity {
         Image =findViewById(R.id.imgShoe);
         Bundle extras = getIntent().getExtras();
         String id = extras.getString("idshoe");
-
+        cartlist=tinydb.getListObject("CartList",Shoes.class);
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cartlist.add(shoe);
                 tinydb.putListObject("CartList",cartlist);
-                Intent intent = new Intent(ItemActivity.this,CartActivity.class);
-                startActivity(intent);
+                Log.d(">>>CARTITEM: ",cartlist.toString());
             }
         });
 
