@@ -9,8 +9,8 @@
 
     <ListView
         android:id="@+id/listcart"
-        android:layout_width="412dp"
-        android:layout_height="524dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="96dp"
         android:numColumns="2"
         android:paddingLeft="12dp"

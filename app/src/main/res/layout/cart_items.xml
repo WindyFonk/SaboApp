@@ -15,7 +15,7 @@
 
         <ImageView
             android:id="@+id/img"
-            android:layout_width="198dp"
+            android:layout_width="160dp"
             android:layout_height="170dp"
             android:padding="16dp"
             android:src="@drawable/cats"
@@ -44,7 +44,7 @@
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
+            android:layout_marginStart="130dp"
             android:padding="@dimen/cardview_default_radius"
             android:text="15,495"
             android:textColor="#5A0505"
