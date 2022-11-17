@@ -39,6 +39,7 @@
                         android:src="@drawable/ic_baseline_menu_24" />
 
                     <ImageView
+                        android:id="@+id/cart"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_alignParentTop="true"

@@ -2,9 +2,15 @@ package com.example.myapplication.customer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.adapter.CartAdapter;
 import com.example.library.TinyDB;
@@ -23,8 +29,29 @@ public class CartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cart);
         lvcart = findViewById(R.id.listcart);
         tinydb = new TinyDB(CartActivity.this);
-        loadData();
         cartlistobj=tinydb.getListObject("CartList",Shoes.class);
+
+        lvcart.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                new AlertDialog.Builder(CartActivity.this)
+                        .setTitle("Confirm delete")
+                        .setMessage("Do you want to remove this item?")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                shoplist.remove(position);
+                                cartlistobj.remove(position);
+                                tinydb.putListObject("CartList",cartlistobj);
+                                Toast.makeText(CartActivity.this, "Removed",
+                                        Toast.LENGTH_LONG).show();
+                                CartAdapter adapterCart = new CartAdapter(shoplist);
+                                lvcart.setAdapter(adapterCart);
+                            }})
+                        .setNegativeButton("Cancel", null).show();
+                return true;
+            }
+        });
     }
 
     @Override

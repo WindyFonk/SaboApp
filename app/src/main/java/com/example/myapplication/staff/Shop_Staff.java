@@ -166,10 +166,8 @@ public class Shop_Staff extends AppCompatActivity {
             }
         });
 
-        
-
-
         if (ashoe==null){
+            //Add new items
             AlertDialog.Builder builderadd = new AlertDialog.Builder(Shop_Staff.this)
                     .setView(view)
                     .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

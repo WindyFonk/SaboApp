@@ -1,7 +1,5 @@
 package com.example.adapter;
 
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -9,16 +7,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.models.Cart;
 import com.example.models.Shoes;
 import com.example.myapplication.R;
-import com.example.myapplication.customer.CartActivity;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class CartAdapter extends BaseAdapter {
     public ArrayList<Shoes> list;

@@ -5,13 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 
 import com.example.adapter.ShoesAdapter;
+import com.example.library.TinyDB;
 import com.example.models.Shoes;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,14 +31,20 @@ public class Shop extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     GridView lvshoes;
+    EditText searchbar;
+    ArrayList<Shoes> list = new ArrayList<>();
+    TinyDB tinydb;
+    ArrayList<Object> cartlist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
         lvshoes=findViewById(R.id.listshoe);
-        loadData();
-
+        searchbar=findViewById(R.id.search);
+        tinydb = new TinyDB(Shop.this);
+        cartlist=tinydb.getListObject("CartList",Shoes.class);
+        Log.d(">>>CARTITEM: ",cartlist.toString());
         lvshoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long _id) {
@@ -45,6 +55,7 @@ public class Shop extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
     @Override
@@ -60,7 +71,6 @@ public class Shop extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            ArrayList<Shoes> list = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Map<String, Object> map = document.getData();
                                 String id= document.getId();
