@@ -7,14 +7,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.models.Orders;
 import com.example.models.Shoes;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
 
-public class CartAdapter extends BaseAdapter {
+public class OrderAdapter extends BaseAdapter {
     public ArrayList<Shoes> list;
-    public CartAdapter(ArrayList<Shoes> list){
+    public OrderAdapter(ArrayList<Shoes> list){
         this.list=list;
     }
 
@@ -39,11 +40,11 @@ public class CartAdapter extends BaseAdapter {
         View view = _view;
         ImageView imgShoe = null;
         if (view == null) {
-            view = View.inflate(_viewGroup.getContext(), R.layout.cart_items, null);
-            TextView tvShoename = view.findViewById(R.id.name);
-            TextView tvShoeprice = view.findViewById(R.id.price);
-            TextView tvShoesize = view.findViewById(R.id.shoesize);
-            imgShoe = view.findViewById(R.id.img);
+            view = View.inflate(_viewGroup.getContext(), R.layout.order_items, null);
+            TextView tvShoename = view.findViewById(R.id.name_order);
+            TextView tvShoeprice = view.findViewById(R.id.price_order);
+            TextView tvShoesize = view.findViewById(R.id.shoesize_order);
+            imgShoe = view.findViewById(R.id.img_order);
             ViewHolder holder = new ViewHolder(tvShoename, tvShoeprice,tvShoesize, imgShoe);
             view.setTag(holder);
         }

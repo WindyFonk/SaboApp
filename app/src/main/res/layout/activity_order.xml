@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/color_background"
+    tools:context=".customer.Shop">
+
+    <ListView
+        android:id="@+id/listorder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="96dp"
+        android:numColumns="2"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:layout_below="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="156dp"
+        android:layout_height="109dp"
+        android:layout_marginStart="127dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/sabologo" />
+
+    <Button
+        android:layout_width="177dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="650dp"
+        android:background="@drawable/btnPur"
+        android:hint="Purchase"
+        android:width="79px"
+        android:layout_marginLeft="200dp" />
+</RelativeLayout>
