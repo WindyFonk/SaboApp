@@ -32,7 +32,7 @@ public class HomeAdminActivity extends AppCompatActivity implements NavigationVi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_home_admin);
 
         featuredRecycler = findViewById(R.id.featured_recycler);
         drawerLayout = findViewById(R.id.drawer_layout);
