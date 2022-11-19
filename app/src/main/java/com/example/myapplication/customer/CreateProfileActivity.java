@@ -134,7 +134,7 @@ public class CreateProfileActivity extends AppCompatActivity {
     public void upLoadImage(Bitmap bitmap){
         FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
         StorageReference storageReference = firebaseStorage.getReference();
-        StorageReference imageReference = storageReference.child(Calendar.getInstance().getTimeInMillis()+".jpg");
+        StorageReference imageReference = storageReference.child(Calendar.getInstance().getTimeInMillis()+".png");
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100,stream);
         byte[] bytes = stream.toByteArray();
