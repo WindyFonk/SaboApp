@@ -40,5 +40,14 @@
         android:textStyle="bold"
         android:textColor="@color/white"/>
 
-
+<androidx.appcompat.widget.AppCompatButton
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="8dp"
+        android:text="edit"
+        android:id="@+id/btnEdit"
+        android:background="@drawable/border_cart_item"/>
 </RelativeLayout>
