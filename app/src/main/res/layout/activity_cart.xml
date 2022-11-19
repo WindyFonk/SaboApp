@@ -9,7 +9,7 @@
 
     <ListView
         android:id="@+id/listcart"
-        android:layout_width="401dp"
+        android:layout_width="match_parent"
         android:layout_height="517dp"
         android:layout_marginBottom="96dp"
         android:numColumns="2"
