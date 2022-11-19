@@ -9,16 +9,30 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.adapter.FeaturedAdapter;
 import com.example.adapter.FeaturedHelperClass;
+import com.example.myapplication.R;
+import com.example.myapplication.customer.ProfileActivity;
+import com.example.myapplication.staff.HomeActivity_Staff;
+import com.example.myapplication.staff.Shop_Staff;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeAdminActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     RecyclerView featuredRecycler;
@@ -26,7 +40,10 @@ public class HomeAdminActivity extends AppCompatActivity implements NavigationVi
     ImageView menuIcon;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
-    Button Edit;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    TextView Name, Address;
+    CircleImageView Pfp;
+    String id;
 
 
     @Override
@@ -38,19 +55,45 @@ public class HomeAdminActivity extends AppCompatActivity implements NavigationVi
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
         menuIcon = findViewById(R.id.ivMenu);
+        //getting Side navigation
         View headerView = navigationView.getHeaderView(0);
-        Edit = headerView.findViewById(R.id.btnEdit);
+        Name = headerView.findViewById(R.id.user_name_side);
+        Address=headerView.findViewById(R.id.address_side);
+        Pfp=headerView.findViewById(R.id.pfpside);
 
+        //getting user id
+        Bundle extras = getIntent().getExtras();
+        id = extras.getString("IdUser");
+
+        DocumentReference docRef = db.collection("AppUsers").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        //get and set user's info
+                        String name = (String) document.get("name");
+                        String address = (String) document.get("address");
+                        String image = (String) document.get("image");
+
+                        Name.setText(name);
+                        Address.setText(address);
+                        Glide.with(HomeAdminActivity.this)
+                                .load(image)
+                                .into(Pfp);
+                        Log.d(">>TAG", name +"\n"+address+"\n"+image);
+                    } else {
+                        Log.d("TAG", "No such document");
+                    }
+                } else {
+                    Log.d("TAG", "get failed with ", task.getException());
+                }
+            }
+        });
 
         featuredRecycler();
         navigationDrawer();
-
-        Edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(HomeAdminActivity.this, ManagerActivity.class));
-            }
-        });
 
     }
 
@@ -98,7 +141,11 @@ public class HomeAdminActivity extends AppCompatActivity implements NavigationVi
                 break;
 
             case R.id.shop:
-                startActivity(new Intent(getApplicationContext(), Shop.class));
+                startActivity(new Intent(getApplicationContext(), Shop_Staff.class));
+                break;
+
+            case R.id.Members:
+                startActivity(new Intent(getApplicationContext(), ManagerActivity.class));
                 break;
         }
         return true;
