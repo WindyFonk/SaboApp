@@ -100,6 +100,31 @@ public class Shop_Staff extends AppCompatActivity {
         });
         loadData();
 
+        //Delete items
+        lvshoes.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Shoes shoe = (Shoes) parent.getItemAtPosition(position);
+                db.collection("Shoe")
+                        .document(shoe.getId())
+                        .delete()
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(Shop_Staff.this, "Đã xóa", Toast.LENGTH_SHORT).show();
+                                loadData();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                //Toast.makeText(Shop_Staff.this, "Couldn't delete this item", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                return true;
+            }
+        });
+
         lvshoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -146,6 +171,7 @@ public class Shop_Staff extends AppCompatActivity {
                 });
     }
 
+    //add & edit items
     public void AddShoesDialog(Shoes shoe) {
         EditText editBrand, editName, editPrice, editDetails, editSize, editColor;
         LayoutInflater mLayoutInflater = getLayoutInflater();
