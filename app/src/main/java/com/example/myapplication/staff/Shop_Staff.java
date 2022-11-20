@@ -31,6 +31,7 @@ import com.example.adapter.ShoesAdapter;
 import com.example.models.Shoes;
 import com.example.myapplication.R;
 import com.example.myapplication.customer.CreateProfileActivity;
+import com.example.myapplication.customer.HomeActivity;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -102,7 +103,8 @@ public class Shop_Staff extends AppCompatActivity {
         lvshoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                ashoe= (Shoes) parent.getItemAtPosition(position);
+                AddShoesDialog(ashoe);
             }
         });
     }
@@ -215,17 +217,57 @@ public class Shop_Staff extends AppCompatActivity {
 
 
         else {
+            imglink=ashoe.getImage();
+            editName.setText(ashoe.getName());
+            editBrand.setText(ashoe.getBrand());
+            editSize.setText(ashoe.getSize());
+            editPrice.setText(String.valueOf(ashoe.getPrice()));
+            editColor.setText(ashoe.getColor());
+            editDetails.setText(ashoe.getDetails());
+            Glide.with(Shop_Staff.this)
+                    .load(imglink)
+                    .into(editImage);
+
             AlertDialog.Builder builderedit = new AlertDialog.Builder(Shop_Staff.this)
                     .setView(view)
                     .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+
                         }
                     })
                     .setPositiveButton("Edit", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-
+                            String Name = editName.getText().toString();
+                            String Brand = editBrand.getText().toString();
+                            String Size = editSize.getText().toString();
+                            String Color = editColor.getText().toString();
+                            Long Price = Long.valueOf(editPrice.getText().toString()) ;
+                            String Details = editDetails.getText().toString();
+                            Map<String, Object> item = new HashMap<>();
+                            item.put("Name", Name);
+                            item.put("Brand", Brand);
+                            item.put("Price", Price);
+                            item.put("Details", Details);
+                            item.put("Image",imglink);
+                            item.put("Size",Size);
+                            item.put("Color",Color);
+                            db.collection("Shoe")
+                                    .document(ashoe.getId())
+                                    .set(item)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            Toast.makeText(Shop_Staff.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
+                                            loadData();
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                        }
+                                    });
                         }
                     });
             alertDialog = builderedit.create();
@@ -253,7 +295,6 @@ public class Shop_Staff extends AppCompatActivity {
                 if (task.isSuccessful()){
                     Uri downloadUri = task.getResult();
                     imglink=downloadUri.toString();
-
                 }
             }
         });

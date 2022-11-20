@@ -35,7 +35,23 @@ public class Shoes {
         this.image = image;
     }
 
-    public Shoes(String id,String name, String brand, Long price, String image, String details, String size, String color) {
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public Shoes(String id, String name, String brand, Long price, String image, String details, String size, String color) {
         this.name = name;
         this.brand = brand;
         this.price = price;
