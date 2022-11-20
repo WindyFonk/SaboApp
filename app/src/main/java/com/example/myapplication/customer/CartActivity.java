@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.adapter.CartAdapter;
 import com.example.library.TinyDB;
+import com.example.models.Orders;
 import com.example.models.Shoes;
 import com.example.myapplication.R;
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class CartActivity extends AppCompatActivity {
     ArrayList<Shoes> shoplist = new ArrayList<>();
     ListView lvcart;
     TinyDB tinydb;
+    ArrayList<Object> orderlist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,8 @@ public class CartActivity extends AppCompatActivity {
         lvcart = findViewById(R.id.listcart);
         tinydb = new TinyDB(CartActivity.this);
         cartlistobj=tinydb.getListObject("CartList",Shoes.class);
+        tinydb = new TinyDB(CartActivity.this);
+        orderlist=tinydb.getListObject("OrderList", Orders.class);
 
         lvcart.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
