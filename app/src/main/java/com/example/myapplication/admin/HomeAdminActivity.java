@@ -1,5 +1,4 @@
-package com.example.myapplication.staff;
-
+package com.example.myapplication.admin;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -13,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +21,8 @@ import com.example.adapter.FeaturedAdapter;
 import com.example.adapter.FeaturedHelperClass;
 import com.example.myapplication.R;
 import com.example.myapplication.customer.ProfileActivity;
+import com.example.myapplication.staff.HomeActivity_Staff;
+import com.example.myapplication.staff.Shop_Staff;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
@@ -32,7 +34,7 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class HomeActivity_Staff extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeAdminActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     RecyclerView featuredRecycler;
     RecyclerView.Adapter adapter;
     ImageView menuIcon;
@@ -43,17 +45,16 @@ public class HomeActivity_Staff extends AppCompatActivity implements NavigationV
     CircleImageView Pfp;
     String id;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_staff);
+        setContentView(R.layout.activity_home_admin);
 
         featuredRecycler = findViewById(R.id.featured_recycler);
         drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.navigation_view_customer);
+        navigationView = findViewById(R.id.navigation_view);
         menuIcon = findViewById(R.id.ivMenu);
-
-
         //getting Side navigation
         View headerView = navigationView.getHeaderView(0);
         Name = headerView.findViewById(R.id.user_name_side);
@@ -78,7 +79,7 @@ public class HomeActivity_Staff extends AppCompatActivity implements NavigationV
 
                         Name.setText(name);
                         Address.setText(address);
-                        Glide.with(HomeActivity_Staff.this)
+                        Glide.with(HomeAdminActivity.this)
                                 .load(image)
                                 .into(Pfp);
                         Log.d(">>TAG", name +"\n"+address+"\n"+image);
@@ -91,8 +92,6 @@ public class HomeActivity_Staff extends AppCompatActivity implements NavigationV
             }
         });
 
-
-
         featuredRecycler();
         navigationDrawer();
 
@@ -101,17 +100,11 @@ public class HomeActivity_Staff extends AppCompatActivity implements NavigationV
     private void navigationDrawer() {
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(this);
-
-        //User information on navigation side
-
-
-
         menuIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (drawerLayout.isDrawerVisible(GravityCompat.START)){
+                if (drawerLayout.isDrawerVisible(GravityCompat.START))
                     drawerLayout.closeDrawer(GravityCompat.START);
-                }
                 else drawerLayout.openDrawer(GravityCompat.START);
             }
         });
@@ -142,15 +135,20 @@ public class HomeActivity_Staff extends AppCompatActivity implements NavigationV
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.profileStaff:
+        switch (item.getItemId()) {
+            case R.id.Profile:
                 startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                 break;
 
-            case R.id.Shop:
+            case R.id.shop:
                 startActivity(new Intent(getApplicationContext(), Shop_Staff.class));
+                break;
+
+            case R.id.Members:
+                startActivity(new Intent(getApplicationContext(), ManagerActivity.class));
                 break;
         }
         return true;
     }
+
 }

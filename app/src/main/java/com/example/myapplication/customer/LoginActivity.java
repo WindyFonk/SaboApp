@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.admin.HomeAdminActivity;
 import com.example.myapplication.staff.HomeActivity_Staff;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -152,6 +153,12 @@ public class LoginActivity extends AppCompatActivity {
                                         Intent intent = new Intent(LoginActivity.this, HomeActivity_Staff.class);
                                         intent.putExtra("IdUser",id);
                                         Log.d(">>>LOGINAS: ","Staff");
+                                        startActivity(intent);
+                                    }
+                                    else if (role==0){
+                                        Intent intent = new Intent(LoginActivity.this, HomeAdminActivity.class);
+                                        intent.putExtra("IdUser",id);
+                                        Log.d(">>>LOGINAS: ","Admin");
                                         startActivity(intent);
                                     }
                                     Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();

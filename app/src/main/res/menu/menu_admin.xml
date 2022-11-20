@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/Shop"
+        android:title="Shop"
+        android:icon="@drawable/shop"/>
+    <item android:id="@+id/CreateOrder"
+        android:title="Create Order"
+        android:icon="@drawable/shopestore"/>
+    <item android:id="@+id/Profile"
+        android:title="Profile"
+        android:icon="@drawable/ic_baseline_people_24"/>
+    <item android:id="@+id/Members"
+        android:title="Members"
+        android:icon="@drawable/member"/>
+    <item android:id="@+id/Statistics"
+        android:title="Statistics"
+        android:icon="@drawable/statistics"/>
+    <item android:id="@+id/Logout"
+        android:title="Log out"
+        android:icon="@drawable/logout"/>
+
+</menu>
