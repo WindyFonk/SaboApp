@@ -16,14 +16,14 @@
             android:layout_width="140dp"
             android:layout_height="140dp"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
             android:src="@drawable/addimage" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="10dp">
 
             <TextView
                 android:id="@+id/nameBrand"
@@ -46,6 +46,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginStart="8dp"
+                android:paddingLeft="5dp"
                 android:background="@drawable/border_dialog_add"
                 android:layout_toRightOf="@id/nameBrand" />
 
@@ -71,6 +72,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="15dp"
+                android:paddingLeft="5dp"
                 android:layout_toRightOf="@id/brand"
                 android:background="@drawable/border_dialog_add"/>
 
@@ -95,6 +97,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="15dp"
+                android:paddingLeft="5dp"
                 android:layout_toRightOf="@id/price"
                 android:layout_marginStart="9dp"
                 android:background="@drawable/border_dialog_add"/>
@@ -108,25 +111,24 @@
                 android:id="@+id/color"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
-                android:layout_marginEnd="348dp"
-                android:layout_marginBottom="248dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="24dp"
                 android:text="Color  :"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBaseline_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/size"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:layout_alignParentRight="true"
+                android:layout_marginTop="80dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="179dp"
                 android:gravity="center"
                 android:text="Size  :"
                 android:textAllCaps="true"
@@ -135,8 +137,8 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBaseline_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/txtShoeColor"
@@ -144,11 +146,11 @@
                 android:layout_height="50dp"
                 android:layout_below="@id/color"
                 android:layout_gravity="center"
-                android:layout_marginStart="68dp"
-                android:layout_marginBottom="234dp"
+                android:inputType="textMultiLine"
+                android:layout_marginStart="72dp"
                 app:layout_constraintBaseline_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/txtShoeSize"
@@ -157,25 +159,27 @@
                 android:layout_below="@id/size"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="center"
-                android:layout_marginEnd="68dp"
-                android:layout_marginBottom="168dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="60dp"
+                android:inputType="textMultiLine"
                 android:textDirection="rtl"
                 app:layout_constraintBaseline_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
-                android:layout_marginBottom="136dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="120dp"
                 android:text="Description: "
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBaseline_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/txtShoeDetails"
@@ -183,14 +187,16 @@
                 android:layout_height="117dp"
                 android:layout_gravity="center"
                 android:layout_marginEnd="3dp"
-                android:layout_marginBottom="1dp"
+                android:layout_marginBottom="28dp"
                 android:hint="Description"
-                android:inputType="textMultiLine"
                 android:paddingLeft="20dp"
+                android:inputType="textMultiLine"
                 app:layout_constraintBaseline_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
