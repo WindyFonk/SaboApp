@@ -23,11 +23,10 @@
             app:civ_border_width="2dp" />
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical">
+        android:layout_marginTop="10dp">
 
         <TextView
             android:id="@+id/name"
@@ -38,18 +37,23 @@
             android:text="Nike Airmax Genome"
             android:textColor="@color/black"
             android:textSize="25dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginBottom="15dp"/>
 
         <TextView
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="130dp"
+            android:layout_marginStart="60dp"
             android:padding="@dimen/cardview_default_radius"
+            android:layout_toRightOf="@id/shoesize"
             android:text="15,495"
             android:textColor="#5A0505"
             android:textSize="18dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_below="@id/name"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="6dp"/>
 
         <TextView
             android:id="@+id/shoesize"
@@ -58,7 +62,9 @@
             android:text="Size: US 9.5"
             android:textColor="@color/black"
             android:textSize="17sp"
-            android:textStyle="bold" />
+            android:layout_below="@id/name"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -68,8 +74,18 @@
             android:id="@+id/shoecolor"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_below="@id/shoesize"/>
 
-    </LinearLayout>
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner"
+            android:layout_marginStart="160dp"
+            android:layout_marginBottom="20dp"
+            android:layout_below="@id/price"
+            />
+
+    </RelativeLayout>
 
 </LinearLayout>
