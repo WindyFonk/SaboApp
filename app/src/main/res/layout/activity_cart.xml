@@ -50,7 +50,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="36dp"
         android:width="79px"
-        android:background="@drawable/btnPur"
+        android:background="@drawable/btnpur"
         android:hint="Purchase"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"

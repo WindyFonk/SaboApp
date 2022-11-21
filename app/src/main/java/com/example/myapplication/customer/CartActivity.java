@@ -19,6 +19,11 @@ import com.example.library.TinyDB;
 import com.example.models.Orders;
 import com.example.models.Shoes;
 import com.example.myapplication.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+
 import java.util.ArrayList;
 
 public class CartActivity extends AppCompatActivity {
@@ -29,6 +34,7 @@ public class CartActivity extends AppCompatActivity {
     Button btnPurchase;
     TextView total;
     ArrayList<Object> orderlist;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +67,15 @@ public class CartActivity extends AppCompatActivity {
                             }})
                         .setNegativeButton("Cancel", null).show();
                 return true;
+            }
+        });
+        btnPurchase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("Orders");
+
+                myRef.setValue(CartActivity.this);
             }
         });
     }
