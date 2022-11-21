@@ -109,14 +109,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:text="Color  :"
+                android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textAllCaps="true"
-                tools:layout_editor_absoluteX="3dp"
-                tools:layout_editor_absoluteY="27dp"
+                app:layout_constraintBaseline_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBaseline_toTopOf="parent"/>
+                tools:layout_editor_absoluteX="3dp"
+                tools:layout_editor_absoluteY="27dp" />
 
             <TextView
                 android:id="@+id/size"
@@ -124,13 +124,13 @@
                 android:layout_height="25dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginEnd="16dp"
+                android:gravity="center"
                 android:text="Size  :"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textDirection="rtl"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:gravity="center"
                 app:layout_constraintBaseline_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:layout_editor_absoluteY="96dp" />
@@ -167,27 +167,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:text="Description: "
+                android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textAllCaps="true"
-                tools:layout_editor_absoluteX="145dp"
-                tools:layout_editor_absoluteY="139dp"
+                app:layout_constraintBaseline_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBaseline_toTopOf="parent"/>
+                tools:layout_editor_absoluteX="145dp"
+                tools:layout_editor_absoluteY="139dp" />
 
             <EditText
                 android:id="@+id/txtShoeDetails"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="408dp"
+                android:layout_height="117dp"
                 android:layout_gravity="center"
-                tools:layout_editor_absoluteX="35dp"
-                tools:layout_editor_absoluteY="182dp"
-                android:paddingLeft="20dp"
-                android:hint="Description"
+                android:layout_marginEnd="3dp"
                 android:background="null"
+                android:hint="Description"
+                android:paddingLeft="20dp"
+                app:layout_constraintBaseline_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBaseline_toTopOf="parent"/>
+                tools:layout_editor_absoluteY="182dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

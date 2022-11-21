@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.adapter.CartAdapter;
@@ -24,17 +26,22 @@ public class CartActivity extends AppCompatActivity {
     ArrayList<Shoes> shoplist = new ArrayList<>();
     ListView lvcart;
     TinyDB tinydb;
+    Button btnPurchase;
+    TextView total;
     ArrayList<Object> orderlist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
         lvcart = findViewById(R.id.listcart);
+        total=findViewById(R.id.txtTotal);
+        btnPurchase = findViewById(R.id.btnPur);
         tinydb = new TinyDB(CartActivity.this);
         cartlistobj=tinydb.getListObject("CartList",Shoes.class);
         tinydb = new TinyDB(CartActivity.this);
         orderlist=tinydb.getListObject("OrderList", Orders.class);
-
+        
+        //delete items
         lvcart.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
