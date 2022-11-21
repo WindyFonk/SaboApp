@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".customer.CreateProfileActivity"
     android:background="@color/blue">
 
     <LinearLayout
@@ -16,150 +15,181 @@
             android:id="@+id/ShoePic"
             android:layout_width="140dp"
             android:layout_height="140dp"
-            android:src="@drawable/addimage"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/addimage" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
+
             <TextView
+                android:id="@+id/nameBrand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/nameBrand"
-                android:text="Name: "
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
+                android:layout_marginTop="40dp"
                 android:layout_marginBottom="20dp"
                 android:paddingStart="20dp"
-                android:layout_marginTop="40dp"/>
+                android:text="Name: "
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/txtShoeName"
                 android:layout_width="300dp"
-                android:layout_height="50dp"
+                android:layout_height="31dp"
                 android:layout_gravity="center"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_toRightOf="@id/nameBrand"/>
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/border_dialog_add"
+                android:layout_toRightOf="@id/nameBrand" />
 
             <TextView
+                android:id="@+id/brand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/brand"
-                android:text="Brand: "
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
                 android:layout_below="@id/nameBrand"
+                android:layout_marginBottom="20dp"
                 android:paddingStart="20dp"
-                android:layout_marginBottom="20dp" />
+                android:text="Brand: "
+                android:textAllCaps="true"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/txtShoeBrand"
                 android:layout_width="300dp"
-                android:layout_height="50dp"
+                android:layout_height="31dp"
+                android:layout_below="@id/nameBrand"
                 android:layout_gravity="center"
-
                 android:layout_marginBottom="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_toRightOf="@id/brand"
-                android:layout_below="@id/nameBrand"/>
+                android:background="@drawable/border_dialog_add"/>
 
             <TextView
+                android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Price: "
-                android:textStyle="bold"
-                android:textAllCaps="true"
-                android:id="@+id/price"
-                android:textColor="@color/black"
                 android:layout_below="@+id/brand"
-                android:paddingStart="20dp"/>
+                android:paddingStart="20dp"
+                android:text="Price: "
+                android:textAllCaps="true"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"/>
 
             <EditText
                 android:id="@+id/txtShoePrice"
                 android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
+                android:layout_height="31dp"
                 android:layout_below="@id/brand"
+                android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
-                android:layout_toRightOf="@id/price"/>
+                android:layout_marginTop="15dp"
+                android:layout_toRightOf="@id/price"
+                android:layout_marginStart="9dp"
+                android:background="@drawable/border_dialog_add"/>
         </RelativeLayout>
 
-            <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+
+            <TextView
+                android:id="@+id/color"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Color: "
-                    android:textSize="16sp"
-                    android:textColor="@color/black"/>
+                android:layout_height="25dp"
+                android:text="Color  :"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                tools:layout_editor_absoluteX="3dp"
+                tools:layout_editor_absoluteY="27dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBaseline_toTopOf="parent"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Size: "
-                    android:layout_marginLeft="190dp"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"/>
-
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/size"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <EditText
-                    android:id="@+id/txtShoeColor"
-                    android:layout_width="150dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:padding="16dp"
-                    android:layout_marginBottom="10dp"/>
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="16dp"
+                android:text="Size  :"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textDirection="rtl"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                app:layout_constraintBaseline_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:layout_editor_absoluteY="96dp" />
 
-                <EditText
-                    android:id="@+id/txtShoeSize"
-                    android:layout_width="150dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="70dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:padding="6dp"
-                    android:layout_marginBottom="10dp"/>
+            <EditText
+                android:id="@+id/txtShoeColor"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/color"
+                android:layout_gravity="center"
+                android:layout_marginStart="68dp"
+                android:background="null"
+                android:hint=".............."
+                app:layout_constraintBaseline_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="16dp" />
 
-            </LinearLayout>
+            <EditText
+                android:id="@+id/txtShoeSize"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/size"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_marginEnd="68dp"
+                android:background="null"
+                android:hint=".............."
+                android:textDirection="rtl"
+                app:layout_constraintBaseline_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:layout_editor_absoluteY="82dp" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:text="Description: "
+                android:textColor="@color/black"
                 android:textSize="16sp"
-                android:textColor="@color/black"/>
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                tools:layout_editor_absoluteX="145dp"
+                tools:layout_editor_absoluteY="139dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBaseline_toTopOf="parent"/>
 
             <EditText
                 android:id="@+id/txtShoeDetails"
-                android:layout_width="300dp"
-                android:layout_height="102dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:lines="5"
-                android:padding="6dp" />
+                tools:layout_editor_absoluteX="35dp"
+                tools:layout_editor_absoluteY="182dp"
+                android:paddingLeft="20dp"
+                android:hint="Description"
+                android:background="null"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBaseline_toTopOf="parent"/>
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
