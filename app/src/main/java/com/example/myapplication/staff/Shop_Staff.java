@@ -120,6 +120,8 @@ public class Shop_Staff extends AppCompatActivity {
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
+                                                Toast.makeText(Shop_Staff.this, "Đã xóa", Toast.LENGTH_SHORT).show();
+                                                loadData();
                                             }
                                         })
                                         .addOnFailureListener(new OnFailureListener() {
@@ -130,8 +132,6 @@ public class Shop_Staff extends AppCompatActivity {
                                         });
                             }})
                         .setNegativeButton("Cancel", null).show();
-                Toast.makeText(Shop_Staff.this, "Đã xóa", Toast.LENGTH_SHORT).show();
-                loadData();
                 return true;
             }
         });

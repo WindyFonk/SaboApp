@@ -1,11 +1,11 @@
 package com.example.models;
 
 public class Orders {
-    private int id, userid;
+    private String id, userid;
     private Double total;
     private String date, status;
 
-    public Orders(int id, int userid, Double total, String date, String status) {
+    public Orders(String id, String userid, Double total, String date, String status) {
         this.id = id;
         this.userid = userid;
         this.total = total;
@@ -13,19 +13,19 @@ public class Orders {
         this.status = status;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getUserid() {
+    public String getUserid() {
         return userid;
     }
 
-    public void setUserid(int userid) {
+    public void setUserid(String userid) {
         this.userid = userid;
     }
 

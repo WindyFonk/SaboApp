@@ -64,6 +64,7 @@ public class CartActivity extends AppCompatActivity {
                                         Toast.LENGTH_LONG).show();
                                 CartAdapter adapterCart = new CartAdapter(shoplist);
                                 lvcart.setAdapter(adapterCart);
+                                loadData();
                             }})
                         .setNegativeButton("Cancel", null).show();
                 return true;
@@ -72,7 +73,6 @@ public class CartActivity extends AppCompatActivity {
         btnPurchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
             }
         });
     }
@@ -84,12 +84,16 @@ public class CartActivity extends AppCompatActivity {
     }
 
     public void loadData(){
+        Long totalprice = Long.valueOf(0);
         for (int i=0;i<cartlistobj.size();i++){
             Shoes shoe = (Shoes) cartlistobj.get(i);
             shoplist.add(shoe);
+            totalprice+=shoe.getPrice();
             Log.d(">>>>CARTTAG",shoplist.get(i).toString());
         }
         CartAdapter adapterCart = new CartAdapter(shoplist);
         lvcart.setAdapter(adapterCart);
+
+        total.setText("Total: " + totalprice);
     }
 }

@@ -53,6 +53,7 @@ public class Shop extends AppCompatActivity {
                 Intent intent = new Intent(Shop.this, ItemActivity.class);
                 intent.putExtra("idshoe",id);
                 startActivity(intent);
+                finish();
             }
         });
 
