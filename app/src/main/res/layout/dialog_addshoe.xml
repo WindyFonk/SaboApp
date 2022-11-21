@@ -108,15 +108,17 @@
                 android:id="@+id/color"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
+                android:layout_marginEnd="348dp"
+                android:layout_marginBottom="248dp"
                 android:text="Color  :"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBaseline_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteX="3dp"
-                tools:layout_editor_absoluteY="27dp" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/size"
@@ -124,6 +126,7 @@
                 android:layout_height="25dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="179dp"
                 android:gravity="center"
                 android:text="Size  :"
                 android:textAllCaps="true"
@@ -132,8 +135,8 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBaseline_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:layout_editor_absoluteY="96dp" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <EditText
                 android:id="@+id/txtShoeColor"
@@ -142,11 +145,10 @@
                 android:layout_below="@id/color"
                 android:layout_gravity="center"
                 android:layout_marginStart="68dp"
-                android:background="null"
-                android:hint=".............."
+                android:layout_marginBottom="234dp"
                 app:layout_constraintBaseline_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="16dp" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
                 android:id="@+id/txtShoeSize"
@@ -156,25 +158,24 @@
                 android:layout_alignParentRight="true"
                 android:layout_gravity="center"
                 android:layout_marginEnd="68dp"
-                android:background="null"
-                android:hint=".............."
+                android:layout_marginBottom="168dp"
                 android:textDirection="rtl"
                 app:layout_constraintBaseline_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:layout_editor_absoluteY="82dp" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
+                android:layout_marginBottom="136dp"
                 android:text="Description: "
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBaseline_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteX="145dp"
-                tools:layout_editor_absoluteY="139dp" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
                 android:id="@+id/txtShoeDetails"
@@ -182,14 +183,14 @@
                 android:layout_height="117dp"
                 android:layout_gravity="center"
                 android:layout_marginEnd="3dp"
-                android:background="null"
+                android:layout_marginBottom="1dp"
                 android:hint="Description"
+                android:inputType="textMultiLine"
                 android:paddingLeft="20dp"
                 app:layout_constraintBaseline_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="182dp" />
-
+                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>

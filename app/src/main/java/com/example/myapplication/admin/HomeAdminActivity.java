@@ -140,7 +140,7 @@ public class HomeAdminActivity extends AppCompatActivity implements NavigationVi
                 startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                 break;
 
-            case R.id.shop:
+            case R.id.Shop:
                 startActivity(new Intent(getApplicationContext(), Shop_Staff.class));
                 break;
 

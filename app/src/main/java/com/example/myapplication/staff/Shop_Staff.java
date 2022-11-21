@@ -27,9 +27,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.bumptech.glide.Glide;
+import com.example.adapter.CartAdapter;
 import com.example.adapter.ShoesAdapter;
 import com.example.models.Shoes;
 import com.example.myapplication.R;
+import com.example.myapplication.customer.CartActivity;
 import com.example.myapplication.customer.CreateProfileActivity;
 import com.example.myapplication.customer.HomeActivity;
 import com.google.android.gms.tasks.Continuation;
@@ -92,6 +94,7 @@ public class Shop_Staff extends AppCompatActivity {
         setContentView(R.layout.activity_shop_staff);
         lvshoes=findViewById(R.id.listshoe);
         fabAddShoe=findViewById(R.id.fabAddShoe);
+        loadData();
         fabAddShoe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,26 +107,35 @@ public class Shop_Staff extends AppCompatActivity {
         lvshoes.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Shoes shoe = (Shoes) parent.getItemAtPosition(position);
-                db.collection("Shoe")
-                        .document(shoe.getId())
-                        .delete()
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Toast.makeText(Shop_Staff.this, "Đã xóa", Toast.LENGTH_SHORT).show();
-                                loadData();
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                //Toast.makeText(Shop_Staff.this, "Couldn't delete this item", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                new AlertDialog.Builder(Shop_Staff.this)
+                        .setTitle("Confirm delete")
+                        .setMessage("Do you want to remove this item?")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                Shoes shoe = (Shoes) parent.getItemAtPosition(position);
+                                db.collection("Shoe")
+                                        .document(shoe.getId())
+                                        .delete()
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                //Toast.makeText(Shop_Staff.this, "Couldn't delete this item", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                            }})
+                        .setNegativeButton("Cancel", null).show();
+                Toast.makeText(Shop_Staff.this, "Đã xóa", Toast.LENGTH_SHORT).show();
+                loadData();
                 return true;
             }
         });
+
 
         lvshoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

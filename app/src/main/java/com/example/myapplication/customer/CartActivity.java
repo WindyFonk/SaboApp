@@ -72,10 +72,7 @@ public class CartActivity extends AppCompatActivity {
         btnPurchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("Orders");
 
-                myRef.setValue(CartActivity.this);
             }
         });
     }
