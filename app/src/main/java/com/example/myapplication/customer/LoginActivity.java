@@ -139,11 +139,11 @@ public class LoginActivity extends AppCompatActivity {
                                     Long role = (Long) document.get("role");
                                     Log.d("IDTAG:  ",""+id);
                                     Log.d("RoleTAG:  ",""+role);
+                                    SharedPreferences sharedPreferences =
+                                            getSharedPreferences("USER",MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putString("Id",id);
                                     if (role==2){
-                                        SharedPreferences sharedPreferences =
-                                                getSharedPreferences("USER",MODE_PRIVATE);
-                                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                                        editor.putString("Id",id);
                                         Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
                                         intent.putExtra("IdUser",id);
                                         Log.d(">>>LOGINAS: ","Customer");

@@ -43,27 +43,31 @@ public class CartAdapter extends BaseAdapter {
             TextView tvShoename = view.findViewById(R.id.name);
             TextView tvShoeprice = view.findViewById(R.id.price);
             TextView tvShoesize = view.findViewById(R.id.shoesize);
+            TextView tvShoecolor = view.findViewById(R.id.shoecolor);
             imgShoe = view.findViewById(R.id.img);
-            ViewHolder holder = new ViewHolder(tvShoename, tvShoeprice,tvShoesize, imgShoe);
+            ViewHolder holder = new ViewHolder(tvShoename, tvShoeprice,tvShoesize,tvShoecolor, imgShoe);
             view.setTag(holder);
         }
         Shoes shoe = (Shoes) getItem(i);
         ViewHolder holder = (ViewHolder) view.getTag();
         holder.tvShoename.setText(shoe.getName());
         holder.tvShoeprice.setText("" + shoe.getPrice());
+        holder.tvShoesize.setText("Size: "+shoe.getSize());
+        holder.tvShoecolor.setText("Color: "+shoe.getColor());
         Glide.with(view.getContext()).load(shoe.getImage()).into(holder.imgShoe);
         return view;
     }
 
     private static class ViewHolder{
-        final TextView tvShoename, tvShoeprice,tvShoesize;
+        final TextView tvShoename, tvShoeprice,tvShoesize,tvShoecolor;
         final ImageView imgShoe;
 
-        public ViewHolder(TextView tvShoename, TextView tvShoeprice, TextView tvShoesize, ImageView imgShoe) {
+        public ViewHolder(TextView tvShoename, TextView tvShoeprice, TextView tvShoesize, TextView tvShoecolor, ImageView imgShoe) {
             this.tvShoename = tvShoename;
             this.tvShoeprice = tvShoeprice;
             this.imgShoe = imgShoe;
             this.tvShoesize=tvShoesize;
+            this.tvShoecolor = tvShoecolor;
         }
     }
 }
