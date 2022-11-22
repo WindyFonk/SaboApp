@@ -52,3 +52,8 @@ app/src/main/res/values/strings.xml
 *.lock
 .idea/workspace.xml
 *.properties
+local.properties
+.gradle/buildOutputCleanup/buildOutputCleanup.lock
+.gradle/buildOutputCleanup/outputFiles.bin
+.idea/deploymentTargetDropDown.xml
+.idea/workspace.xml

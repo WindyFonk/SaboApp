@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.library.TinyDB;
@@ -52,6 +53,7 @@ public class ItemActivity extends AppCompatActivity {
                 cartlist.add(shoe);
                 tinydb.putListObject("CartList",cartlist);
                 Log.d(">>>CARTITEM: ",cartlist.toString());
+                Toast.makeText(ItemActivity.this, "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
             }
         });
 

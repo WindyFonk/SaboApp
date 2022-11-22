@@ -64,6 +64,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(HomeActivity.this,CartActivity.class);
+                intent.putExtra("IdUser",id);
                 startActivity(intent);
             }
         });

@@ -43,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnPur"
         android:layout_width="177dp"
         android:layout_height="54dp"
@@ -51,7 +51,7 @@
         android:layout_marginBottom="36dp"
         android:width="79px"
         android:background="@drawable/btnpur"
-        android:hint="Purchase"
+        android:text="Purchase"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

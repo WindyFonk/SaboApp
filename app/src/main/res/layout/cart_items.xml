@@ -78,13 +78,12 @@
             android:layout_below="@id/shoesize"/>
 
         <Spinner
+            android:id="@+id/spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/spinner"
-            android:layout_marginStart="160dp"
-            android:layout_marginBottom="20dp"
             android:layout_below="@id/price"
-            />
+            android:layout_marginStart="160dp"
+            android:layout_marginBottom="20dp"/>
 
     </RelativeLayout>
 

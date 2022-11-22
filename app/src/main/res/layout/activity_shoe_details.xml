@@ -14,19 +14,10 @@
         android:id="@+id/llTop">
 
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_baseline_menu_24"
-            android:paddingStart="20dp"/>
-        <ImageView
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:src="@drawable/sabologo"
             android:layout_weight="1"/>
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:src="@drawable/shopestore"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

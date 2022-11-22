@@ -207,7 +207,7 @@ public class Shop_Staff extends AppCompatActivity {
         });
 
         if (ashoe==null){
-            //Add new items
+            //Add new shoe
             AlertDialog.Builder builderadd = new AlertDialog.Builder(Shop_Staff.this)
                     .setView(view)
                     .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -253,7 +253,7 @@ public class Shop_Staff extends AppCompatActivity {
             alertDialog = builderadd.create();
         }
 
-
+        //edit shoe
         else {
             imglink=ashoe.getImage();
             editName.setText(ashoe.getName());

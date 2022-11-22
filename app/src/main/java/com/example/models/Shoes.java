@@ -7,6 +7,7 @@ public class Shoes {
     private String details;
     private String size;
     private String color;
+    private Integer quantity;
 
     public String getId() {
         return id;
@@ -61,6 +62,25 @@ public class Shoes {
         this.size=size;
         this.color=color;
     }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Shoes(String id, String name, Long price, String image, String size, String color, Integer quantity) {
+        this.name = name;
+        this.price = price;
+        this.image=image;
+        this.id=id;
+        this.size=size;
+        this.color=color;
+        this.quantity=quantity;
+    }
+
 
     public String getName() {
         return name;
