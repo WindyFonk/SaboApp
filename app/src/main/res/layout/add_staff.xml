@@ -3,21 +3,15 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:background="#C3F8FF"
-    android:layout_height="match_parent">
-
-    <LinearLayout
-        android:id="@+id/llProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    android:layout_height="match_parent"
+    android:padding="12dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/createPfpPic"
             android:layout_width="140dp"
             android:layout_height="140dp"
-            android:src="@drawable/addimage"
-            android:layout_gravity="center"/>
-    </LinearLayout>
+            android:layout_gravity="center"
+            android:src="@drawable/addimage" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -43,13 +37,12 @@
                 android:textColor="@color/black" />
 
 
-
             <EditText
                 android:id="@+id/edtName"
-                android:layout_width="250dp"
+                android:layout_width="154dp"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -68,13 +61,12 @@
                 android:textColor="@color/black" />
 
 
-
             <EditText
                 android:id="@+id/edtEmail"
-                android:layout_width="250dp"
+                android:layout_width="156dp"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -83,54 +75,6 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="20dp"
             android:orientation="horizontal">
-
-
-            <TextView
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="37dp"
-                android:text="PASSWORD: "
-                android:textSize="18sp"
-                android:textColor="@color/black" />
-
-            <EditText
-                android:id="@+id/edtPassword"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="@color/black" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="20dp"
-            android:orientation="horizontal">
-
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="25dp"
-                android:text="Ph. number: "
-                android:textSize="18sp"
-                android:textColor="@color/black" />
-
-
-
-            <EditText
-                android:id="@+id/edtPhone"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="@color/black" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="20dp"
-            android:orientation="horizontal">
-
 
             <TextView
                 android:layout_width="140dp"
@@ -140,12 +84,11 @@
                 android:textSize="18sp"
                 android:textColor="@color/black" />
 
-            <EditText
-                android:id="@+id/edtRole"
-                android:layout_width="250dp"
+            <Spinner
+                android:id="@+id/spinnerrole"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="@color/black" />
+                android:layout_weight="1" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

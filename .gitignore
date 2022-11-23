@@ -57,3 +57,5 @@ local.properties
 .gradle/buildOutputCleanup/outputFiles.bin
 .idea/deploymentTargetDropDown.xml
 .idea/workspace.xml
+*.lock
+.idea/workspace.xml

@@ -54,11 +54,21 @@ public class StaffAdapter extends BaseAdapter {
             StaffAdapter.ViewHolder holder = new StaffAdapter.ViewHolder(profileName,profileRole, imgStaff);
             view.setTag(holder);
         }
-        Shoes shoe = (Shoes) getItem(i);
+        AppUsers user = (AppUsers) getItem(i);
         StaffAdapter.ViewHolder holder = (StaffAdapter.ViewHolder) view.getTag();
-        holder.profileRole.setText(shoe.getName());
-        holder.profileName.setText("" + shoe.getPrice());
-        Glide.with(view.getContext()).load(shoe.getImage()).into(holder.imgStaff);
+        if (user.getRole()==0){
+            holder.profileRole.setText("Admin");
+        }
+        else if (user.getRole()==1){
+            holder.profileRole.setText("Staff");
+        }
+        else{
+            holder.profileRole.setText("Customer");
+        }
+        holder.profileName.setText("" + user.getName());
+        Glide.with(view.getContext())
+                .load(user.getImage())
+                .into(holder.imgStaff);
         return view;
     }
 

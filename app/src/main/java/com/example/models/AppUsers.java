@@ -2,8 +2,16 @@ package com.example.models;
 
 public class AppUsers {
     private String email, password, name, address, phonenumb;
-    private Integer role;
-    private String id;
+    private Long role;
+    private String id, image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public String getId() {
         return id;
@@ -15,13 +23,15 @@ public class AppUsers {
 
 
 
-    public AppUsers(String email, String password, String name, String address, String phonenumb, Integer role) {
+    public AppUsers(String id,String email, String password, String name, String address, String phonenumb, Long role, String image) {
+        this.id=id;
         this.email = email;
         this.password = password;
         this.name = name;
         this.address = address;
         this.phonenumb = phonenumb;
         this.role = role;
+        this.image=image;
     }
 
     public String getEmail() {
@@ -64,11 +74,11 @@ public class AppUsers {
         this.phonenumb = phonenumb;
     }
 
-    public Integer getRole() {
+    public Long getRole() {
         return role;
     }
 
-    public void setRole(Integer role) {
+    public void setRole(Long role) {
         this.role = role;
     }
 }
