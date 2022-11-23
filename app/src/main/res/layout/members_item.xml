@@ -12,9 +12,11 @@
         android:background="@drawable/background_staff_manager">
         <ImageView
             android:layout_width="100dp"
-            android:layout_height="80dp"
+            android:layout_height="100dp"
             android:src="@drawable/profile"
             android:id="@+id/profilePicture"
+            android:scaleType="fitXY"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="30dp"/>
         <TextView
             android:id="@+id/profileName"
@@ -22,11 +24,11 @@
             android:layout_height="wrap_content"
             android:text="Sam Horlands"
             android:textSize="24sp"
-            android:textStyle="bold"
+            android:textStyle="normal"
             android:textColor="@color/white"
             android:layout_toRightOf="@+id/profilePicture"
             android:layout_marginTop="20dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="14dp"
             android:layout_marginBottom="20dp"
 
             />
@@ -36,12 +38,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/profileName"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="14dp"
             android:layout_toRightOf="@id/profilePicture"
             android:text="Employee"
             android:textColor="@color/white"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="italic" />
 
     </RelativeLayout>
 
