@@ -11,13 +11,14 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/background_staff_manager">
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="110dp"
+            android:layout_height="120dp"
             android:src="@drawable/profile"
             android:id="@+id/profilePicture"
             android:scaleType="fitXY"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"/>
         <TextView
             android:id="@+id/profileName"
             android:layout_width="wrap_content"
