@@ -77,13 +77,15 @@
             android:textStyle="bold"
             android:layout_below="@id/shoesize"/>
 
-        <Spinner
-            android:id="@+id/spinner"
+        <TextView
+            android:id="@+id/quantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/price"
-            android:layout_marginStart="160dp"
-            android:layout_marginBottom="20dp"/>
+            android:text="1"
+            android:textColor="@color/black"
+            android:layout_marginStart="180dp"
+            android:layout_marginBottom="1dp"/>
 
     </RelativeLayout>
 

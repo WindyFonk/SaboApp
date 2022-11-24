@@ -2,8 +2,10 @@ package com.example.adapter;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -44,30 +46,34 @@ public class CartAdapter extends BaseAdapter {
             TextView tvShoeprice = view.findViewById(R.id.price);
             TextView tvShoesize = view.findViewById(R.id.shoesize);
             TextView tvShoecolor = view.findViewById(R.id.shoecolor);
+            TextView tvShoequantity = view.findViewById(R.id.quantity);
             imgShoe = view.findViewById(R.id.img);
-            ViewHolder holder = new ViewHolder(tvShoename, tvShoeprice,tvShoesize,tvShoecolor, imgShoe);
+            ViewHolder holder = new ViewHolder(tvShoename, tvShoeprice, tvShoesize, tvShoecolor, imgShoe,tvShoequantity);
             view.setTag(holder);
         }
         Shoes shoe = (Shoes) getItem(i);
         ViewHolder holder = (ViewHolder) view.getTag();
         holder.tvShoename.setText(shoe.getName());
         holder.tvShoeprice.setText("" + shoe.getPrice());
-        holder.tvShoesize.setText("Size: "+shoe.getSize());
-        holder.tvShoecolor.setText("Color: "+shoe.getColor());
+        holder.tvShoesize.setText("Size: " + shoe.getSize());
+        holder.tvShoecolor.setText("Color: " + shoe.getColor());
+        holder.tvShoequantity.setText(""+shoe.getQuantity());
         Glide.with(view.getContext()).load(shoe.getImage()).into(holder.imgShoe);
         return view;
     }
 
     private static class ViewHolder{
-        final TextView tvShoename, tvShoeprice,tvShoesize,tvShoecolor;
+        final TextView tvShoename, tvShoeprice,tvShoesize,tvShoecolor,tvShoequantity;
         final ImageView imgShoe;
 
-        public ViewHolder(TextView tvShoename, TextView tvShoeprice, TextView tvShoesize, TextView tvShoecolor, ImageView imgShoe) {
+        public ViewHolder(TextView tvShoename, TextView tvShoeprice, TextView tvShoesize,
+                          TextView tvShoecolor, ImageView imgShoe, TextView tvShoequantity) {
             this.tvShoename = tvShoename;
             this.tvShoeprice = tvShoeprice;
             this.imgShoe = imgShoe;
             this.tvShoesize=tvShoesize;
             this.tvShoecolor = tvShoecolor;
+            this.tvShoequantity = tvShoequantity;
         }
     }
 }

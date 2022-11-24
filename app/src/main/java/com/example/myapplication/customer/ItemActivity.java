@@ -47,6 +47,7 @@ public class ItemActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         String id = extras.getString("idshoe");
         cartlist=tinydb.getListObject("CartList",Shoes.class);
+
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,11 +74,11 @@ public class ItemActivity extends AppCompatActivity {
                         Long price = (Long) document.get("Price");
                         String brand = (String) document.get("Brand");
                         shoe = new Shoes(id,name,brand,price,image,details,size,color);
+                        shoe.setQuantity(1);
                         Name.setText(name);
                         Details.setText(details);
                         Color.setText("Color: "+color);
                         Size.setText("Size: "+size);
-
                         Glide.with(ItemActivity.this)
                                 .load(image)
                                 .into(Image);

@@ -59,6 +59,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ManagerActivity extends AppCompatActivity {
@@ -102,6 +103,38 @@ public class ManagerActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         btnAddStaff = findViewById(R.id.btnAddMembers);
         loadData();
+
+        ListMembers.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                new android.app.AlertDialog.Builder(ManagerActivity.this)
+                        .setTitle("Confirm delete")
+                        .setMessage("Do you want to remove this user?")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                AppUsers user = (AppUsers) parent.getItemAtPosition(position);
+                                db.collection("AppUsers")
+                                        .document(user.getId())
+                                        .delete()
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                Toast.makeText(ManagerActivity.this, "Đã xóa", Toast.LENGTH_SHORT).show();
+                                                loadData();
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                //Toast.makeText(Shop_Staff.this, "Couldn't delete this item", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                            }})
+                        .setNegativeButton("Cancel", null).show();
+                return true;
+            }
+        });
 
 
         ListMembers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
