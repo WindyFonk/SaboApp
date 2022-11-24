@@ -137,7 +137,9 @@ public class HomeAdminActivity extends AppCompatActivity implements NavigationVi
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.Profile:
-                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                intent.putExtra("IdUser",id);
+                startActivity(intent);
                 break;
 
             case R.id.Shop:

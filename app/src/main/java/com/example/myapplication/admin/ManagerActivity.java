@@ -107,7 +107,8 @@ public class ManagerActivity extends AppCompatActivity {
         ListMembers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ListMembers = (ListView) parent.getItemAtPosition(position);
+                AppUsers user = (AppUsers) parent.getItemAtPosition(position);
+                AddStaff(user);
             }
         });
 
@@ -201,6 +202,13 @@ public class ManagerActivity extends AppCompatActivity {
 
 
         else{
+            imglink=appUsers.getImage();
+            edtName.setText(appUsers.getName());
+            edtEmail.setText(appUsers.getEmail());
+            edtRole.setSelection(Math.toIntExact(appUsers.getRole()));
+            Glide.with(ManagerActivity.this)
+                    .load(imglink)
+                    .into(editStaffimg);
             AlertDialog.Builder builderedit = new AlertDialog.Builder(ManagerActivity.this)
                     .setView(view)
                     .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -214,18 +222,23 @@ public class ManagerActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int which) {
                             String Name = edtName.getText().toString();
                             String Email = edtEmail.getText().toString();
+                            String Role = edtRole.getSelectedItem().toString();
+                            int role;
                             Map<String, Object> AppUsers = new HashMap<>();
-
+                            if (Role.equals("Admin")){
+                                role = 0;
+                            }
+                            else{
+                                role = 1;
+                            }
                             AppUsers.put("name", Name);
                             AppUsers.put("email", Email);
-                            AppUsers.put("phonenumber", "");
-                            AppUsers.put("password", "1");
                             AppUsers.put("image", imglink);
-                            AppUsers.put("role", "");
+                            AppUsers.put("role", role);
 
                             db.collection("AppUsers")
                                     .document(appUsers.getId())
-                                    .set(AppUsers)
+                                    .update(AppUsers)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void unused) {
@@ -278,6 +291,7 @@ public class ManagerActivity extends AppCompatActivity {
 
     public void loadData() {
         db.collection("AppUsers")
+                .whereLessThan("role", 2)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

@@ -62,9 +62,6 @@ public class StaffAdapter extends BaseAdapter {
         else if (user.getRole()==1){
             holder.profileRole.setText("Staff");
         }
-        else{
-            holder.profileRole.setText("Customer");
-        }
         holder.profileName.setText("" + user.getName());
         Glide.with(view.getContext())
                 .load(user.getImage())
