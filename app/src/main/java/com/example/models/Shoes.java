@@ -68,6 +68,7 @@ public class Shoes {
     }
 
     public void setQuantity(Integer quantity) {
+
         this.quantity = quantity;
     }
 

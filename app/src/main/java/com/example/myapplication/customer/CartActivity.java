@@ -2,10 +2,14 @@ package com.example.myapplication.customer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,6 +42,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class CartActivity extends AppCompatActivity {
     ArrayList<Object> cartlistobj = new ArrayList<Object>();
@@ -47,9 +54,9 @@ public class CartActivity extends AppCompatActivity {
     Button btnPurchase;
     TextView total;
     String id;
+    CartAdapter adapterCart;
     Date date = Calendar.getInstance().getTime();
     Long totalprice;
-    ArrayList<Object> orderlist;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,10 +68,19 @@ public class CartActivity extends AppCompatActivity {
         tinydb = new TinyDB(CartActivity.this);
         cartlistobj=tinydb.getListObject("CartList",Shoes.class);
         tinydb = new TinyDB(CartActivity.this);
-        orderlist=tinydb.getListObject("OrderList", Orders.class);
         Bundle extras = getIntent().getExtras();
         id = extras.getString("IdUser");
-        
+        adapterCart = new CartAdapter(shoplist);
+        for (int i=0;i<cartlistobj.size();i++){
+            Shoes shoe = (Shoes) cartlistobj.get(i);
+            shoplist.add(shoe);
+            //totalprice+=shoe.getPrice()*shoe.getQuantity();
+            Log.d(">>>>CARTTAG",shoplist.get(i).toString());
+        }
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
+                new IntentFilter("Get Total"));
+
         //delete items
         lvcart.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -82,7 +98,6 @@ public class CartActivity extends AppCompatActivity {
                                         Toast.LENGTH_LONG).show();
                                 CartAdapter adapterCart = new CartAdapter(shoplist);
                                 lvcart.setAdapter(adapterCart);
-                                loadData();
                             }})
                         .setNegativeButton("Cancel", null).show();
                 return true;
@@ -94,7 +109,7 @@ public class CartActivity extends AppCompatActivity {
                 Map<String, Object> item = new HashMap<>();
                 item.put("date", date);
                 item.put("status", "Delivery");
-                item.put("total", totalprice);
+                item.put("total", Long.valueOf(total.getText().toString()));
                 item.put("userid", "/AppUsers/"+id);
                 db.collection("Orders")
                         .add(item)
@@ -102,6 +117,9 @@ public class CartActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {
                                 Toast.makeText(CartActivity.this, "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(CartActivity.this, PurchaseActivity.class);
+                                startActivity(intent);
+                                finish();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
@@ -120,14 +138,6 @@ public class CartActivity extends AppCompatActivity {
     }
 
     public void loadData(){
-        totalprice = Long.valueOf(0);
-        for (int i=0;i<cartlistobj.size();i++){
-            Shoes shoe = (Shoes) cartlistobj.get(i);
-            shoplist.add(shoe);
-            totalprice+=shoe.getPrice();
-            Log.d(">>>>CARTTAG",shoplist.get(i).toString());
-        }
-        CartAdapter adapterCart = new CartAdapter(shoplist);
         Log.d(">>>TAGSIZE: ",""+shoplist.size());
         if (shoplist.size()==0){
             btnPurchase.setEnabled(false);
@@ -136,6 +146,26 @@ public class CartActivity extends AppCompatActivity {
             btnPurchase.setEnabled(true);
         }
         lvcart.setAdapter(adapterCart);
-        total.setText("Total: " + totalprice);
+        total.setText(""+ getTotalPrice(shoplist));
     }
+
+
+    public static long getTotalPrice(ArrayList<Shoes> list){
+        Long totalprice = Long.valueOf(0);
+        for (int i=0;i<list.size();i++){
+            Shoes shoe = (Shoes) list.get(i);
+            Log.d(">>>TAG QUANTITY CART",""+shoe.getQuantity());
+            totalprice+=shoe.getPrice()*shoe.getQuantity();
+        }
+        return totalprice;
+    }
+
+    public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // Get extra data included in the Intent
+            Long totalprice = intent.getLongExtra("Total",0);
+            total.setText(""+ totalprice);
+        }
+    };
 }
