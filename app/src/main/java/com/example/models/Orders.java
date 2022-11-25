@@ -2,15 +2,14 @@ package com.example.models;
 
 public class Orders {
     private String id, userid;
-    private Double total;
+    private Long total;
     private String date, status;
 
-    public Orders(String id, String userid, Double total, String date, String status) {
-        this.id = id;
-        this.userid = userid;
+    public Orders(String id, Long total, String date, String status) {
         this.total = total;
         this.date = date;
         this.status = status;
+        this.id=id;
     }
 
     public String getId() {
@@ -29,11 +28,11 @@ public class Orders {
         this.userid = userid;
     }
 
-    public Double getTotal() {
+    public Long getTotal() {
         return total;
     }
 
-    public void setTotal(Double total) {
+    public void setTotal(Long total) {
         this.total = total;
     }
 

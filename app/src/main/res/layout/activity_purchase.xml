@@ -58,8 +58,9 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="160dp"
+            android:id="@+id/btnHome"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
+            android:layout_marginStart="28dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/border_button_backtohome"
             android:text="Back to homepage"
@@ -70,9 +71,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnShop"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="232dp"
+            android:layout_marginStart="224dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/border_button_continueshop"
             android:text="Continue Shop"

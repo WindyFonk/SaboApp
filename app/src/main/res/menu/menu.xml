@@ -5,7 +5,7 @@
         android:title="Shop"
         android:icon="@drawable/shop"/>
 
-    <item android:id="@+id/myOder"
+    <item android:id="@+id/myOrder"
         android:title="My Order"
         android:icon="@drawable/store"/>
 

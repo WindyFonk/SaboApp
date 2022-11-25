@@ -161,6 +161,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.shop:
                 startActivity(new Intent(getApplicationContext(), Shop.class));
                 break;
+
+            case R.id.myOrder:
+                intent = new Intent(getApplicationContext(), OrderActivity.class);
+                intent.putExtra("IdUser",id);
+                startActivity(intent);
         }
         return true;
     }

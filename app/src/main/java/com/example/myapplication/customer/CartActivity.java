@@ -31,6 +31,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -98,6 +99,7 @@ public class CartActivity extends AppCompatActivity {
                                         Toast.LENGTH_LONG).show();
                                 CartAdapter adapterCart = new CartAdapter(shoplist);
                                 lvcart.setAdapter(adapterCart);
+                                loadData();
                             }})
                         .setNegativeButton("Cancel", null).show();
                 return true;
@@ -111,22 +113,17 @@ public class CartActivity extends AppCompatActivity {
                 item.put("status", "Delivery");
                 item.put("total", Long.valueOf(total.getText().toString()));
                 item.put("userid", "/AppUsers/"+id);
-                db.collection("Orders")
-                        .add(item)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Toast.makeText(CartActivity.this, "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(CartActivity.this, PurchaseActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                            }
-                        });
+                CollectionReference ref = FirebaseFirestore.getInstance().collection("Orders");
+                ref.add(item);
+                String myId = ref.document().getId();
+                Log.d(">>ORDERID: ",""+myId);
+                shoplist.clear();
+                cartlistobj.clear();
+                tinydb.putListObject("CartList",cartlistobj);
+                Toast.makeText(CartActivity.this, "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(CartActivity.this, PurchaseActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
