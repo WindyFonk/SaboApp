@@ -13,9 +13,9 @@
         android:icon="@drawable/ic_baseline_people_24"
         android:title="Profile"/>
 
-    <item android:id="@+id/Statistics"
-        android:title="Statistics"
-        android:icon="@drawable/statistics"/>
+    <item android:id="@+id/Order"
+        android:title="Order"
+        android:icon="@drawable/cart"/>
         
     <item android:id="@+id/Logout"
         android:title="Logout"
