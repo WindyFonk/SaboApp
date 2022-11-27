@@ -166,6 +166,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 intent = new Intent(getApplicationContext(), OrderActivity.class);
                 intent.putExtra("IdUser",id);
                 startActivity(intent);
+                break;
+
+            case R.id.Logout:
+                intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+                finish();
         }
         return true;
     }

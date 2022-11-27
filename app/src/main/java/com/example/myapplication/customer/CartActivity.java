@@ -113,17 +113,41 @@ public class CartActivity extends AppCompatActivity {
                 item.put("status", "Delivery");
                 item.put("total", Long.valueOf(total.getText().toString()));
                 item.put("userid", "/AppUsers/"+id);
-                CollectionReference ref = FirebaseFirestore.getInstance().collection("Orders");
-                ref.add(item);
-                String myId = ref.document().getId();
-                Log.d(">>ORDERID: ",""+myId);
-                shoplist.clear();
-                cartlistobj.clear();
-                tinydb.putListObject("CartList",cartlistobj);
-                Toast.makeText(CartActivity.this, "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(CartActivity.this, PurchaseActivity.class);
-                startActivity(intent);
-                finish();
+                db.collection("Orders")
+                        .add(item)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                Map<String, Object> details = new HashMap<>();
+                                for (int i = 0; i < shoplist.size(); i++) {
+                                    Shoes shoe = shoplist.get(i);
+                                    details.put("quantity", shoe.getQuantity());
+                                    details.put("shoeid", "/Shoe/"+shoe.getId());
+                                    details.put("name", "/Shoe/"+shoe.getName());
+                                    details.put("price", "/Shoe/"+shoe.getPrice());
+                                    details.put("size", "/Shoe/"+shoe.getSize());
+                                    details.put("image", "/Shoe/"+shoe.getImage());
+                                    details.put("color", "/Shoe/"+shoe.getColor());
+                                    details.put("orderid", "/Orders/"+documentReference.getId());
+                                    db.collection("OrdersDetails")
+                                            .add(details);
+                                }
+                                shoplist.clear();
+                                cartlistobj.clear();
+                                tinydb.putListObject("CartList",cartlistobj);
+                                Toast.makeText(CartActivity.this, "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(CartActivity.this, PurchaseActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                            }
+                        });
+
+
             }
         });
     }

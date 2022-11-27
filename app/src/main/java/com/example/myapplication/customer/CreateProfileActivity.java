@@ -29,6 +29,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -159,10 +160,9 @@ public class CreateProfileActivity extends AppCompatActivity {
 
     //adding user's information
     private void onCreateProfile(){
-        SharedPreferences sharedPreferences = getSharedPreferences("USER",MODE_PRIVATE);
-        String id= sharedPreferences.getString("Id",null);
-        String email = sharedPreferences.getString("email",null);
-        String password = sharedPreferences.getString("password",null);
+        Bundle extras = getIntent().getExtras();
+        String email = extras.getString("email");
+        String password = extras.getString("password");
         String phonenumb = txPhone.getText().toString();
         String address = txAddress.getText().toString();
         String name = txName.getText().toString();
@@ -174,14 +174,13 @@ public class CreateProfileActivity extends AppCompatActivity {
         item.put("address", address);
         item.put("image",imglink);
         item.put("role",2);
-        Log.d(">>>>TAG",""+id+"\n"+phonenumb+"\n"+address+"\n"+imglink);
 
         db.collection("AppUsers")
-                .document(id)
-                .set(item)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                .add(item)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
-                    public void onSuccess(Void unused) {
+                    public void onSuccess(DocumentReference documentReference) {
+                        String id = documentReference.getId();
                         Toast.makeText(CreateProfileActivity.this, "Chào mừng bạn đến với Sabo", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(CreateProfileActivity.this,HomeActivity.class);
                         intent.putExtra("IdUser",id);

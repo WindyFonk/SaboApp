@@ -103,53 +103,13 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void onSignupClick(){
-        //add new user
+        //send data and launch CreateProfileActivity
         String email = txemail.getText().toString();
         String password = txpassword.getText().toString();
-
-        Map<String, Object> item = new HashMap<>();
-        item.put("email", email);
-        item.put("password", password);
-        item.put("phonenumber", "");
-        item.put("address", "");
-        item.put("image","");
-        db.collection("AppUsers")
-                .add(item)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-
-                        //get and set user ID for further uses
-                        db.collection("AppUsers")
-                                .get()
-                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                        if (task.isSuccessful()) {
-                                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                                String id = document.getId();
-                                                SharedPreferences sharedPreferences =
-                                                        getSharedPreferences("USER",MODE_PRIVATE);
-                                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                                editor.putString("Id",id);
-                                                editor.putString("email",email);
-                                                editor.putString("password",password);
-                                                editor.commit();
-                                            }
-                                        } else {
-                                            Log.w("TAG", "Error getting documents.", task.getException());
-                                        }
-                                    }
-                                });
-                        Intent intent = new Intent(SignupActivity.this,CreateProfileActivity.class);
-                        startActivity(intent);
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-
-                    }
-                });
+        Intent intent = new Intent(SignupActivity.this,CreateProfileActivity.class);
+        intent.putExtra("email",email);
+        intent.putExtra("password",password);
+        startActivity(intent);
+        finish();
     }
 }

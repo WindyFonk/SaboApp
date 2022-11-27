@@ -211,6 +211,7 @@ public class ManagerActivity extends AppCompatActivity {
                             AppUsers.put("name", Name);
                             AppUsers.put("email", Email);
                             AppUsers.put("phonenumber", "");
+                            AppUsers.put("address", "");
                             AppUsers.put("password", "");
                             AppUsers.put("image", imglink);
                             AppUsers.put("role", role);
