@@ -12,6 +12,14 @@ public class Orders {
         this.id=id;
     }
 
+    public Orders(String id, String userid, Long total, String date, String status) {
+        this.total = total;
+        this.date = date;
+        this.status = status;
+        this.id=id;
+        this.userid = userid;
+    }
+
     public String getId() {
         return id;
     }

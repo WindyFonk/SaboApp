@@ -39,10 +39,10 @@ public class ViewAdapter extends FragmentStatePagerAdapter {
         String title = "";
         switch (position){
             case 0:
-                title = "Fragment1";
+                title = "Order";
                 break;
             case 1:
-                title = "Fragment2";
+                title = "Sold";
                 break;
         }
         return title;

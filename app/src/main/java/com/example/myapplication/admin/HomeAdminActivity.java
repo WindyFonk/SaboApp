@@ -20,8 +20,11 @@ import com.bumptech.glide.Glide;
 import com.example.adapter.FeaturedAdapter;
 import com.example.adapter.FeaturedHelperClass;
 import com.example.myapplication.R;
+import com.example.myapplication.customer.LoginActivity;
 import com.example.myapplication.customer.ProfileActivity;
+import com.example.myapplication.customer.Shop;
 import com.example.myapplication.staff.HomeActivity_Staff;
+import com.example.myapplication.staff.OrderActivity_Staff;
 import com.example.myapplication.staff.Shop_Staff;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -148,6 +151,21 @@ public class HomeAdminActivity extends AppCompatActivity implements NavigationVi
 
             case R.id.Members:
                 startActivity(new Intent(getApplicationContext(), ManagerActivity.class));
+                break;
+
+            case R.id.CreateOrder:
+                intent = new Intent(getApplicationContext(), Shop.class);
+                intent.putExtra("IdUser",id);
+                startActivity(intent);
+                break;
+
+            case R.id.Logout:
+                intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+                finish();
+
+            case R.id.Order:
+                startActivity(new Intent(getApplicationContext(), OrderActivity_Staff.class));
                 break;
         }
         return true;
