@@ -16,7 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
-
+        <activity
+            android:name=".staff.OrderActivity_Staff"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".customer.PurchaseActivity"
             android:exported="false">
@@ -24,7 +30,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".customer.OrderActivity"
             android:exported="false">
@@ -32,7 +37,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".admin.HomeAdminActivity"
             android:exported="false">
