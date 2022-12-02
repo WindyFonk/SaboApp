@@ -21,12 +21,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ngày :"
-                android:textSize="24sp"
-                android:textStyle="bold"
                 android:layout_marginStart="20dp"
+                android:text="Date:"
                 android:textColor="@color/white"
-                />
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/orderDate"
@@ -48,12 +47,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Trạng Thái :"
-                android:textSize="24sp"
-                android:textStyle="bold"
                 android:layout_marginStart="20dp"
+                android:text="Status:"
                 android:textColor="@color/white"
-                />
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/orderStatus"
@@ -75,13 +73,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Số tiền :"
-                android:textSize="24sp"
-                android:textStyle="bold"
                 android:layout_marginStart="20dp"
-                android:textColor="@color/white"
                 android:layout_marginBottom="20dp"
-                />
+                android:text="Amount:"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/orderTotal"

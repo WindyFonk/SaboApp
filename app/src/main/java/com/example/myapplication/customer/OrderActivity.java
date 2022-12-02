@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,11 +20,14 @@ import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
 
 public class OrderActivity extends AppCompatActivity {
@@ -66,8 +70,9 @@ public class OrderActivity extends AppCompatActivity {
                                 Map<String, Object> map = document.getData();
                                 String id= document.getId();
                                 Timestamp time = (Timestamp) map.get("date");
-                                String date = time.toDate().toString();
-                                date = date.replace("GMT+07:00","");
+                                String pattern = "dd-MM-yyyy";
+                                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+                                String date = simpleDateFormat.format(time.toDate());
                                 String status = map.get("status").toString();
                                 Long total = (Long) map.get("total");
                                 Orders order =new Orders(id,total,date,status);
@@ -109,7 +114,7 @@ public class OrderActivity extends AppCompatActivity {
                                 image  = image.replace("/Shoe/","");
                                 OrdersDetails details = new OrdersDetails(orderid,shoeid,image,name,price,color,size,quantity);
                                 detailslist.add(details);
-                                setDetailslist(detailslist);
+                                setDetailslist(detailslist, order);
                             }
                         } else {
                             Log.w("TAG", "Error getting documents.", task.getException());
@@ -119,7 +124,7 @@ public class OrderActivity extends AppCompatActivity {
     }
 
     //dialog showing bought items
-    public void setDetailslist(ArrayList<OrdersDetails> list){
+    public void setDetailslist(ArrayList<OrdersDetails> list, Orders order){
         AlertDialog alertDialog;
         LayoutInflater mLayoutInflater = getLayoutInflater();
         View view = mLayoutInflater.inflate(R.layout.dialog_ordersdetails, null);
@@ -128,6 +133,17 @@ public class OrderActivity extends AppCompatActivity {
         lv.setAdapter(adapter);
         AlertDialog.Builder builder = new AlertDialog.Builder(OrderActivity.this)
                 .setView(view);
+        if ((order.getStatus()).equals("Delivery")){
+            builder.setPositiveButton("Đã nhận hàng", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    db.collection("Orders")
+                            .document(order.getId()).update("status","Delivered");
+                    loadData();
+                }
+            });
+        }
+
         alertDialog = builder.create();
         alertDialog.show();
     }

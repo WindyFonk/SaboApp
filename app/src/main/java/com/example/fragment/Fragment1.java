@@ -31,6 +31,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -75,8 +76,9 @@ public class Fragment1 extends Fragment {
                                 String userid= map.get("userid").toString();
                                 userid = userid.replace("/AppUsers/","");
                                 Timestamp time = (Timestamp) map.get("date");
-                                String date = time.toDate().toString();
-                                date = date.replace("GMT+07:00","");
+                                String pattern = "dd-MM-yyyy";
+                                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+                                String date = simpleDateFormat.format(time.toDate());
                                 String status = map.get("status").toString();
                                 Long total = (Long) map.get("total");
                                 Orders order =new Orders(id,userid,total,date,status);

@@ -25,4 +25,16 @@ public class OrderActivity_Staff extends AppCompatActivity {
         viewPager.setAdapter(viewAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }
+
+    @Override
+    protected void onDestroy() {
+        finish();
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        finish();
+        super.onPause();
+    }
 }

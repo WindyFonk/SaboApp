@@ -251,7 +251,7 @@ public class ManagerActivity extends AppCompatActivity {
 
                         }
                     })
-                    .setPositiveButton("Add", new DialogInterface.OnClickListener() {
+                    .setPositiveButton("Edit", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             String Name = edtName.getText().toString();
