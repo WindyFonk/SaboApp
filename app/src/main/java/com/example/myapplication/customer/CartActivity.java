@@ -186,7 +186,7 @@ public class CartActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             // Get extra data included in the Intent
             Long totalprice = intent.getLongExtra("Total",0);
-            total.setText(""+ totalprice);
+            total.setText(""+ totalprice+"$");
         }
     };
 }

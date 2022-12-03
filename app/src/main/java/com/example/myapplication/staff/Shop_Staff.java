@@ -233,21 +233,25 @@ public class Shop_Staff extends AppCompatActivity {
                             item.put("Image",imglink);
                             item.put("Size",Size);
                             item.put("Color",Color);
-                            db.collection("Shoe")
-                                    .add(item)
-                                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                        @Override
-                                        public void onSuccess(DocumentReference documentReference) {
-                                            Toast.makeText(Shop_Staff.this, "Shoe added", Toast.LENGTH_SHORT).show();
-                                            loadData();
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            Toast.makeText(Shop_Staff.this, "Failure, skill issue", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
+                            validCheck(Name, Brand, Price, Size, Color);
+                            if (validCheck(Name, Brand, Price, Size, Color)==true){
+                                db.collection("Shoe")
+                                        .add(item)
+                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                            @Override
+                                            public void onSuccess(DocumentReference documentReference) {
+                                                Toast.makeText(Shop_Staff.this, "Shoe added", Toast.LENGTH_SHORT).show();
+                                                loadData();
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Toast.makeText(Shop_Staff.this, "Failure, skill issue", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                            }
+
                         }
                     });
             alertDialog = builderadd.create();
@@ -291,21 +295,23 @@ public class Shop_Staff extends AppCompatActivity {
                             item.put("Image",imglink);
                             item.put("Size",Size);
                             item.put("Color",Color);
-                            db.collection("Shoe")
-                                    .document(ashoe.getId())
-                                    .set(item)
-                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                        @Override
-                                        public void onSuccess(Void unused) {
-                                            Toast.makeText(Shop_Staff.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
-                                            loadData();
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                        }
-                                    });
+                            if (validCheck(Name, Brand, Price, Size, Color)==true){
+                                db.collection("Shoe")
+                                        .document(ashoe.getId())
+                                        .set(item)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void unused) {
+                                                Toast.makeText(Shop_Staff.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
+                                                loadData();
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                            }
+                                        });
+                            }
                         }
                     });
             alertDialog = builderedit.create();
@@ -341,5 +347,33 @@ public class Shop_Staff extends AppCompatActivity {
     void useImage(Uri uri) throws IOException {
         Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
         upLoadImage(bitmap);
+    }
+
+    private boolean validCheck(String Name, String Brand, Long Price, String Size, String Color){
+
+        if (Name.length()==0){
+            Toast.makeText(this, "Please enter name", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        else if (Brand.length()==0){
+            Toast.makeText(this, "Please enter brand", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        else if (Price.equals("0")) {
+            Toast.makeText(this, "Please enter price", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        else if (Size.length()==0) {
+            Toast.makeText(this, "Please enter size", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (Color.length()==0) {
+            Toast.makeText(this, "Please enter color", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 }

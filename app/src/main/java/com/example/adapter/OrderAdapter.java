@@ -49,7 +49,7 @@ public class OrderAdapter extends BaseAdapter {
         Orders order = (Orders) getItem(i);
         ViewHolder holder = (ViewHolder) view.getTag();
         holder.tvDate.setText(order.getDate());
-        holder.tvTotal.setText("" + order.getTotal());
+        holder.tvTotal.setText("" + order.getTotal()+"$");
         holder.tvStatus.setText(order.getStatus());
 
         return view;

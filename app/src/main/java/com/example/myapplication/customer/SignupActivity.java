@@ -77,7 +77,6 @@ public class SignupActivity extends AppCompatActivity {
             return false;
         }
         return true;
-
     }
 
     private boolean identicalCheck(String email){

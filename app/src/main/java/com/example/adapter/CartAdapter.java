@@ -62,7 +62,7 @@ public class CartAdapter extends BaseAdapter {
         Shoes shoe = (Shoes) getItem(i);
         ViewHolder holder = (ViewHolder) view.getTag();
         holder.tvShoename.setText(shoe.getName());
-        holder.tvShoeprice.setText("" + shoe.getPrice());
+        holder.tvShoeprice.setText("" + shoe.getPrice()+"$");
         holder.tvShoesize.setText("Size: " + shoe.getSize());
         holder.tvShoecolor.setText("Color: " + shoe.getColor());
         holder.tvShoequantity.setText(""+shoe.getQuantity());

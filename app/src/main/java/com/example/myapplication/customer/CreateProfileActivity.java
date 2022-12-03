@@ -48,7 +48,7 @@ public class CreateProfileActivity extends AppCompatActivity {
     EditText txAddress, txPhone, txName;
     CircleImageView pfpPic;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    String imglink;
+    String imglink="https://firebasestorage.googleapis.com/v0/b/duan-f46e9.appspot.com/o/pfp.png?alt=media&token=147b7c14-d5bf-4b5a-8051-d5f0495986a9";
     Button gotoshop;
 
     @Override
@@ -174,24 +174,47 @@ public class CreateProfileActivity extends AppCompatActivity {
         item.put("address", address);
         item.put("image",imglink);
         item.put("role",2);
+        validCheck(name,phonenumb,address);
+        if (validCheck(name,phonenumb,address)==true){
+            db.collection("AppUsers")
+                    .add(item)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            String id = documentReference.getId();
+                            Toast.makeText(CreateProfileActivity.this, "Chào mừng bạn đến với Sabo", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(CreateProfileActivity.this,HomeActivity.class);
+                            intent.putExtra("IdUser",id);
+                            startActivity(intent);
+                            finish();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                        }
+                    });
+        }
 
-        db.collection("AppUsers")
-                .add(item)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        String id = documentReference.getId();
-                        Toast.makeText(CreateProfileActivity.this, "Chào mừng bạn đến với Sabo", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(CreateProfileActivity.this,HomeActivity.class);
-                        intent.putExtra("IdUser",id);
-                        startActivity(intent);
-                        finish();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                    }
-                });
+
+    }
+
+    private boolean validCheck(String name, String phone, String address){
+
+        if (name.length()==0){
+            Toast.makeText(this, "Please enter name", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        else if (phone.length()==0){
+            Toast.makeText(this, "Please enter phone number", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        else if (address.length()==0) {
+            Toast.makeText(this, "Please enter address", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 }

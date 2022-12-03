@@ -61,7 +61,7 @@ public class ShoesAdapter extends BaseAdapter {
         Shoes shoe = (Shoes) getItem(i);
         ViewHolder holder = (ViewHolder) view.getTag();
         holder.tvShoename.setText(shoe.getName());
-        holder.tvShoeprice.setText("" + shoe.getPrice());
+        holder.tvShoeprice.setText("" + shoe.getPrice()+"$");
         Glide.with(view.getContext()).load(shoe.getImage()).into(holder.imgShoe);
         return view;
     }
