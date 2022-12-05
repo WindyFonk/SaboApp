@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,9 +15,7 @@
         android:numColumns="2"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_below="@id/imageView" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -33,40 +31,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="82dp"
-        android:layout_marginTop="641dp"
-        android:layout_marginBottom="58dp"
+        android:layout_marginBottom="70dp"
         android:gravity="center_vertical"
         android:text="11212"
         android:textColor="@color/white"
         android:textSize="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentBottom="true"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="336dp"
-        android:layout_marginBottom="58dp"
-        android:gravity="center_vertical"
+        android:layout_marginBottom="70dp"
         android:text="Total:"
         android:textColor="@color/white"
         android:textSize="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_alignParentBottom="true"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnPur"
         android:layout_width="177dp"
         android:layout_height="54dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="36dp"
-        android:width="79px"
+        android:layout_marginBottom="46dp"
         android:background="@drawable/btnpur"
         android:text="Purchase"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
+</RelativeLayout>

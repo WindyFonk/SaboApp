@@ -41,11 +41,12 @@
             <EditText
                 android:id="@+id/txtShoeName"
                 android:layout_width="300dp"
-                android:layout_height="31dp"
+                android:layout_height="35dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginStart="8dp"
+                android:textColor="@color/black"
                 android:paddingLeft="5dp"
                 android:background="@drawable/border_dialog_add"
                 android:layout_toRightOf="@id/nameBrand" />
@@ -67,11 +68,12 @@
             <EditText
                 android:id="@+id/txtShoeBrand"
                 android:layout_width="300dp"
-                android:layout_height="31dp"
+                android:layout_height="35dp"
                 android:layout_below="@id/nameBrand"
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="15dp"
+                android:textColor="@color/black"
                 android:paddingLeft="5dp"
                 android:layout_toRightOf="@id/brand"
                 android:background="@drawable/border_dialog_add"/>
@@ -92,11 +94,12 @@
             <EditText
                 android:id="@+id/txtShoePrice"
                 android:layout_width="300dp"
-                android:layout_height="31dp"
+                android:layout_height="35dp"
                 android:layout_below="@id/brand"
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="15dp"
+                android:textColor="@color/black"
                 android:paddingLeft="5dp"
                 android:layout_toRightOf="@id/price"
                 android:layout_marginStart="9dp"
@@ -148,6 +151,7 @@
                 android:layout_gravity="center"
                 android:inputType="textMultiLine"
                 android:layout_marginStart="72dp"
+                android:textColor="@color/black"
                 app:layout_constraintBaseline_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -163,6 +167,7 @@
                 android:layout_marginEnd="60dp"
                 android:inputType="textMultiLine"
                 android:textDirection="rtl"
+                android:textColor="@color/black"
                 app:layout_constraintBaseline_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -190,6 +195,7 @@
                 android:layout_marginBottom="28dp"
                 android:paddingLeft="80dp"
                 android:inputType="textMultiLine"
+                android:textColor="@color/black"
                 app:layout_constraintBaseline_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

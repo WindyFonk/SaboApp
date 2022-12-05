@@ -56,7 +56,8 @@
                 android:layout_marginEnd="60dp"
                 android:text="Adress: "
                 android:textSize="18sp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:layout_marginStart="20dp"/>
 
             <ImageView
                 android:id="@+id/editAddress"
@@ -88,7 +89,8 @@
                 android:layout_marginEnd="72dp"
                 android:text="Email: "
                 android:textSize="18sp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:layout_marginStart="20dp"/>
 
             <ImageView
                 android:layout_width="20dp"
@@ -121,7 +123,8 @@
                 android:layout_marginEnd="37dp"
                 android:text="Password: "
                 android:textSize="18sp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:layout_marginStart="20dp"/>
 
             <ImageView
                 android:layout_width="20dp"
@@ -153,7 +156,8 @@
                 android:layout_marginEnd="25dp"
                 android:text="Ph. number: "
                 android:textSize="18sp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:layout_marginStart="20dp"/>
 
             <ImageView
                 android:layout_width="20dp"

@@ -37,6 +37,15 @@
                         android:layout_marginTop="3dp"
                         android:background="@drawable/menu_border"
                         android:src="@drawable/ic_baseline_menu_24" />
+                    <ImageView
+                        android:id="@+id/cart"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginEnd="20dp"
+                        android:src="@drawable/cart" />
 
                     <ImageView
                         android:layout_width="300dp"
