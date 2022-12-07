@@ -111,7 +111,9 @@ public class CartActivity extends AppCompatActivity {
                 Map<String, Object> item = new HashMap<>();
                 item.put("date", date);
                 item.put("status", "Delivery");
-                item.put("total", Long.valueOf(total.getText().toString()));
+                String totals = total.getText().toString();
+                totals  = totals.replace("$","");
+                item.put("total", Long.valueOf(totals));
                 item.put("userid", "/AppUsers/"+id);
                 db.collection("Orders")
                         .add(item)

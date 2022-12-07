@@ -71,3 +71,5 @@ local.properties
 .gradle/buildOutputCleanup/buildOutputCleanup.lock
 .gradle/buildOutputCleanup/buildOutputCleanup.lock
 .idea/workspace.xml
+.idea/workspace.xml
+.gradle/buildOutputCleanup/buildOutputCleanup.lock

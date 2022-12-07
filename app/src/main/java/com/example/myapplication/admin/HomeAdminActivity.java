@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.example.adapter.FeaturedAdapter;
 import com.example.adapter.FeaturedHelperClass;
 import com.example.myapplication.R;
+import com.example.myapplication.customer.CartActivity;
 import com.example.myapplication.customer.LoginActivity;
 import com.example.myapplication.customer.ProfileActivity;
 import com.example.myapplication.customer.Shop;
@@ -40,7 +41,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class HomeAdminActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     RecyclerView featuredRecycler;
     RecyclerView.Adapter adapter;
-    ImageView menuIcon;
+    ImageView menuIcon,cartIcon;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -53,7 +54,7 @@ public class HomeAdminActivity extends AppCompatActivity implements NavigationVi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_admin);
-
+        cartIcon=findViewById(R.id.cart);
         featuredRecycler = findViewById(R.id.featured_recycler);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
@@ -67,6 +68,15 @@ public class HomeAdminActivity extends AppCompatActivity implements NavigationVi
         //getting user id
         Bundle extras = getIntent().getExtras();
         id = extras.getString("IdUser");
+
+        cartIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(HomeAdminActivity.this, CartActivity.class);
+                intent.putExtra("IdUser",id);
+                startActivity(intent);
+            }
+        });
 
         DocumentReference docRef = db.collection("AppUsers").document(id);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
