@@ -12,6 +12,7 @@
         android:id="@+id/listordersold"
         android:layout_width="match_parent"
         android:layout_height="546dp"
+        android:dividerHeight="10sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
